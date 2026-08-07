@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+/* ==========================================
+   RESET & BASE STYLES
+========================================== */
+
+@layer base {
+    /* 
+      Removed the aggressive * { margin: 0; padding: 0; } 
+      Tailwind's Preflight already applies box-sizing: border-box globally 
+      and expertly resets margins without breaking utility classes. 
+    */
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+        background-color: #f8fafc;
+        color: #0f172a;
+        font-family:
+            "Inter",
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+
+    /* ==========================================
+       MEDIA PRESETS
+    ========================================== */
+
+    img,
+    picture,
+    svg,
+    video,
+    canvas {
+        display: block;
+        max-width: 100%;
+    }
+
+    img {
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* ==========================================
+       FORM CONTROLS RESET
+    ========================================== */
+
+    button,
+    input,
+    textarea,
+    select {
+        font: inherit;
+        color: inherit;
+    }
+
+    button {
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        appearance: textfield;
+    }
+
+    /* ==========================================
+       LINKS
+    ========================================== */
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+/* ==========================================
+   UTILITIES & PSEUDO-SELECTORS
+   (Kept outside of base layer to ensure they apply correctly)
+========================================== */
+
+/* Fix browser autofill dark backgrounds */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+    -webkit-text-fill-color: #0f172a !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+::selection {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+/* ==========================================
+   CUSTOM SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+/* ==========================================
+   GLOBAL UI ENHANCEMENTS
+========================================== */
+
+button,
+a,
+input,
+textarea,
+select {
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12),
+        0 0 0 1px rgb(37, 99, 235);
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
