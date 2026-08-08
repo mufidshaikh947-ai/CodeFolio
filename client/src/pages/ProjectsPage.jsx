@@ -389,22 +389,17 @@ return (
                         />
 
                         <FileUpload
-
-                            label="Choose Project Image"
-
-                            accept="image/*"
-
-                            helperText="JPG, PNG or WEBP"
-
-                            fileName={
-                                projectImage?.length > 0
-                                    ? projectImage[0].name
-                                    : ""
-                            }
-
-                            onChange={() => {}}
-
-                        />
+    label="Choose Project Image"
+    accept="image/*"
+    register={register}
+    name="projectImage"
+    helperText="JPG, PNG or WEBP"
+    fileName={
+        projectImage?.length > 0
+            ? projectImage[0].name
+            : ""
+    }
+/>
 
                         {projectImage?.length > 0 && (
 

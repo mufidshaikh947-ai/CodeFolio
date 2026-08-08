@@ -3,24 +3,28 @@ import { UploadCloud, CheckCircle2, Loader2 } from "lucide-react";
 function FileUpload({
     label,
     accept,
-    onChange,
+    register,
+    name,
     uploading = false,
     fileName = "",
     helperText = ""
 }) {
+
     return (
-        <div className="w-full space-y-4">
+        <div className="space-y-4">
+
             {label && (
-                <label className="block text-xs font-bold tracking-wide text-slate-700 uppercase">
+                <label className="block text-sm font-bold uppercase tracking-wide text-slate-700">
                     {label}
                 </label>
             )}
 
             <div className="relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-white p-6 text-center transition-all hover:border-blue-400 hover:bg-blue-50/20">
+
                 <input
                     type="file"
                     accept={accept}
-                    onChange={onChange}
+                    {...register(name)}
                     className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
                 />
 
@@ -29,7 +33,10 @@ function FileUpload({
                 </div>
 
                 <p className="mt-3 text-xs font-bold text-slate-700">
-                    Click to upload <span className="font-normal text-slate-500">or drag and drop</span>
+                    Click to upload{" "}
+                    <span className="font-normal text-slate-500">
+                        or drag and drop
+                    </span>
                 </p>
 
                 {helperText && (
@@ -37,21 +44,27 @@ function FileUpload({
                         {helperText}
                     </p>
                 )}
+
             </div>
 
             {uploading && (
                 <div className="flex items-center gap-2 text-xs font-semibold text-blue-600">
-                    <Loader2 size={14} className="animate-spin" />
-                    <span>Uploading file to server...</span>
+                    <Loader2
+                        size={14}
+                        className="animate-spin"
+                    />
+                    Uploading file...
                 </div>
             )}
 
             {fileName && !uploading && (
                 <div className="flex items-center gap-2 rounded-lg bg-emerald-50 px-3 py-3 text-xs font-medium text-emerald-700">
                     <CheckCircle2 size={14} />
-                    <span>Selected: <strong className="font-semibold">{fileName}</strong></span>
+                    Selected:
+                    <strong>{fileName}</strong>
                 </div>
             )}
+
         </div>
     );
 }

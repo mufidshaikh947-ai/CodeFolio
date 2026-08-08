@@ -269,7 +269,8 @@ className="space-y-6"            >
 
         helperText="JPG, PNG or WEBP"
 
-        onChange={() => {}}
+       register={register}
+name="certificateImage"
 
     />
 
