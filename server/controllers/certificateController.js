@@ -19,7 +19,7 @@ const createCertificate = async (req, res) => {
 
             credentialUrl: req.body.credentialUrl,
 certificateImage: req.file
-    ? req.file.filename
+    ? req.file.path.replace(/\\/g, "/")
     : "",
 skills: req.body.skills,
 

@@ -45,12 +45,10 @@ const API_URL = import.meta.env.VITE_API_URL;
                                         <img
 
                                             src={
-
-                                               project.projectImage
-    ? `${API_URL}/${project.projectImage}`
-    : "https://placehold.co/700x500?text=Project"
-
-                                            }
+    project.image
+        ? `${API_URL}/${project.image}`
+        : "https://placehold.co/700x500?text=Project"
+}
 
                                             alt={project.title}
 
@@ -93,22 +91,23 @@ const API_URL = import.meta.env.VITE_API_URL;
                                             </p>
 
                                             <div className="mt-8 flex flex-wrap gap-3">
+{(
+    Array.isArray(project.technologies)
+        ? project.technologies
+        : String(project.technologies || "")
+              .split(",")
+              .map(t => t.trim())
+              .filter(Boolean)
+).map((tech, index) => (
 
-                                                {project.techStack?.map((tech, index) => (
+    <span
+        key={index}
+        className="rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700"
+    >
+        {tech}
+    </span>
 
-                                                    <span
-
-                                                        key={index}
-
-                                                        className="rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700"
-
-                                                    >
-
-                                                        {tech}
-
-                                                    </span>
-
-                                                ))}
+))}
 
                                             </div>
 

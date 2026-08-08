@@ -46,7 +46,11 @@ const certificateSchema = new mongoose.Schema(
         skills: {
     type: [String],
     default: []
-}
+},
+displayOrder: {
+    type: Number,
+    default: 0
+},
     },
     {
         timestamps: true
