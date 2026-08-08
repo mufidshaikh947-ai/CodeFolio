@@ -1,0 +1,54 @@
+/* =========================
+   Google Font
+========================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+/* =========================
+   Global
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    background:#f8fafc;
+    color:#0f172a;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+main{
+    width:100%;
+    overflow-x:hidden;
+}
+
+/* =========================
+   Reusable Container
+========================= */
+
+nav>div,
+section>div,
+footer{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+/* =========================
+   Sections
+========================= */
+
+section{
+    padding:90px 0;
+}
