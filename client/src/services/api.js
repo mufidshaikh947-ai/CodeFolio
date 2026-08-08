@@ -1,14 +1,18 @@
 import axios from "axios";
 import { API_URL } from "../constants/api";
 
+console.log("API_URL =", API_URL);
+
 const api = axios.create({
- baseURL: API_URL,
+  baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 api.interceptors.request.use((config) => {
+  console.log("Sending request to:", config.baseURL + config.url);
+
   const token = localStorage.getItem("token");
 
   if (token) {
@@ -17,22 +21,5 @@ api.interceptors.request.use((config) => {
 
   return config;
 });
-api.interceptors.response.use(
-
-    response => response,
-
-    error => {
-
-        if (error.response?.status === 401) {
-
-            localStorage.removeItem("token");
-
-        }
-
-        return Promise.reject(error);
-
-    }
-
-);
 
 export default api;
