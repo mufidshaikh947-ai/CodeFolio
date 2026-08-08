@@ -14,13 +14,11 @@
    COMMON
 =========================================================== */
 
-.container{
-    width:min(1200px,92%);
+.homepage .container{    width:min(1200px,92%);
     margin:auto;
 }
 
-section{
-    padding:90px 0;
+.homepage section{    padding:90px 0;
 }
 
 .section-subtitle{
@@ -36,8 +34,7 @@ section{
    NAVBAR
 =========================================================== */
 
-.navbar{
-
+.homepage .navbar{
     position:sticky;
     top:0;
     z-index:1000;
@@ -50,8 +47,7 @@ section{
 
 }
 
-.navbar .container{
-
+.homepage .navbar .container{
     height:82px;
 
     display:flex;
@@ -60,38 +56,34 @@ section{
 
 }
 
-.logo{
-
+.homepage .logo{
     font-size:2rem;
     font-weight:800;
     color:#2563eb;
 
 }
 
-.nav-links{
-
+.homepage .nav-links{
     display:flex;
     align-items:center;
     gap:36px;
 
 }
 
-.nav-links a{
-
+.homepage .nav-links{
     font-weight:600;
     color:#475569;
     transition:.25s;
 
 }
 
-.nav-links a:hover{
+.homepage .nav-links a:hover{
 
     color:#2563eb;
 
 }
 
 .btn-nav{
-
     background:#2563eb;
     color:white !important;
 
@@ -101,7 +93,7 @@ section{
 
 }
 
-.btn-nav:hover{
+.homepage .btn-nav:hover{
 
     background:#1d4ed8;
 
@@ -111,8 +103,7 @@ section{
    HERO
 =========================================================== */
 
-.hero{
-
+.homepage .hero{
     background:linear-gradient(
         180deg,
         #f8fbff 0%,
@@ -123,8 +114,7 @@ section{
 
 }
 
-.hero-grid{
-
+.homepage .hero-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:80px;
@@ -132,8 +122,7 @@ section{
 
 }
 
-.hero-content h1{
-
+.homepage .hero-content h1{
     font-size:4rem;
     line-height:1.08;
     margin:28px 0;
@@ -142,8 +131,7 @@ section{
 
 }
 
-.hero-content p{
-
+.homepage .hero-content p{
     font-size:1.15rem;
     line-height:1.9;
 
@@ -153,8 +141,7 @@ section{
 
 }
 
-.hero-badge{
-
+.homepage .hero-badge{
     display:inline-block;
 
     padding:10px 22px;
@@ -169,15 +156,14 @@ section{
 
 }
 
-.hero-buttons{
-
+.homepage .hero-buttons{
     display:flex;
     gap:20px;
 
 }
 
-.btn-primary,
-.btn-secondary{
+.homepage .btn-primary,
+.homepage .btn-secondary{
 
     padding:18px 34px;
 
@@ -189,43 +175,41 @@ section{
 
 }
 
-.btn-primary{
+.homepage .btn-primary{
 
     background:#2563eb;
     color:white;
 
 }
 
-.btn-primary:hover{
+.homepage .btn-primary:hover{
 
     background:#1d4ed8;
     transform:translateY(-3px);
 
 }
 
-.btn-secondary{
+.homepage .btn-secondary{
 
     border:2px solid #2563eb;
     color:#2563eb;
 
 }
 
-.btn-secondary:hover{
+.homepage .btn-secondary:hover{
 
     background:#2563eb;
     color:white;
 
 }
 
-.hero-preview{
-
+.homepage .hero-preview{
     display:flex;
     justify-content:center;
 
 }
 
-.browser{
-
+.homepage .browser{
     width:470px;
     height:580px;
 
@@ -239,8 +223,7 @@ section{
 
 }
 
-.browser-top{
-
+.homepage .browser-top{
     height:28px;
 
     background:#dbeafe;
@@ -251,8 +234,7 @@ section{
 
 }
 
-.profile-circle{
-
+.homepage .profile-circle{
     width:70px;
     height:70px;
 
@@ -264,8 +246,7 @@ section{
 
 }
 
-.line{
-
+.homepage .line{
     height:15px;
 
     background:#94a3b8;
@@ -276,13 +257,13 @@ section{
 
 }
 
-.line-long{
+.homepage .line-long{
 
     width:100%;
 
 }
 
-.line-short{
+.homepage .line-short{
 
     width:60%;
 
@@ -290,7 +271,7 @@ section{
 
 }
 
-.card-grid{
+.homepage .card-grid{
 
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -298,7 +279,7 @@ section{
 
 }
 
-.card-grid div{
+.homepage .card-grid div{
 
     height:110px;
 
@@ -312,13 +293,13 @@ section{
    FEATURES
 =========================================================== */
 
-.features{
+.homepage .features{
 
     background:white;
 
 }
 
-.features h2{
+.homepage .features h2{
 
     text-align:center;
 
@@ -326,7 +307,7 @@ section{
 
 }
 
-.feature-grid{
+.homepage .feature-grid{
 
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -334,7 +315,7 @@ section{
 
 }
 
-.feature-card{
+.homepage .feature-card{
 
     background:#f8fafc;
 
@@ -348,7 +329,7 @@ section{
 
 }
 
-.feature-card:hover{
+.homepage .feature-card:hover{
 
     transform:translateY(-8px);
 
@@ -356,7 +337,7 @@ section{
 
 }
 
-.icon{
+.homepage .icon{
 
     width:72px;
     height:72px;
@@ -375,7 +356,7 @@ section{
 
 }
 
-.feature-card h3{
+.homepage .feature-card h3{
 
     font-size:1.4rem;
 
@@ -383,7 +364,7 @@ section{
 
 }
 
-.feature-card p{
+.homepage .feature-card p{
 
     color:#64748b;
 
@@ -395,13 +376,13 @@ section{
    HOW
 =========================================================== */
 
-.how{
+.homepage .how{
 
     background:#f8fbff;
 
 }
 
-.how h2{
+.homepage .how h2{
 
     text-align:center;
 
@@ -409,7 +390,7 @@ section{
 
 }
 
-.steps{
+.homepage .steps{
 
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -417,7 +398,7 @@ section{
 
 }
 
-.step{
+.homepage .step{
 
     background:white;
 
@@ -433,7 +414,7 @@ section{
 
 }
 
-.step:hover{
+.homepage .step:hover{
 
     transform:translateY(-8px);
 
@@ -441,7 +422,7 @@ section{
 
 }
 
-.step span{
+.homepage .step span{
 
     width:74px;
     height:74px;
@@ -464,7 +445,7 @@ section{
 
 }
 
-.step h3{
+.homepage .step h3{
 
     margin-bottom:15px;
 
@@ -472,7 +453,7 @@ section{
 
 }
 
-.step p{
+.homepage .step p{
 
     color:#64748b;
 
@@ -484,7 +465,7 @@ section{
    CTA
 =========================================================== */
 
-.cta{
+.homepage .cta{
 
     background:linear-gradient(
         135deg,
@@ -498,7 +479,7 @@ section{
 
 }
 
-.cta h2{
+.homepage .cta h2{
 
     font-size:3rem;
 
@@ -506,7 +487,7 @@ section{
 
 }
 
-.cta p{
+.homepage .cta p{
 
     max-width:720px;
 
@@ -520,7 +501,7 @@ section{
 
 }
 
-.btn-white{
+.homepage .btn-white{
 
     display:inline-block;
 
@@ -538,7 +519,7 @@ section{
 
 }
 
-.btn-white:hover{
+.homepage .btn-white:hover{
 
     transform:translateY(-4px);
 
@@ -548,7 +529,7 @@ section{
    FOOTER
 =========================================================== */
 
-footer{
+.homepage .footer{
 
     background:white;
 
@@ -556,7 +537,7 @@ footer{
 
 }
 
-.footer-top{
+.homepage .footer-top{
 
     padding:70px 0;
 
@@ -566,7 +547,7 @@ footer{
 
 }
 
-.footer-top p{
+.homepage .footer-top p{
 
     margin-top:12px;
 
@@ -574,14 +555,14 @@ footer{
 
 }
 
-.footer-links{
+.homepage .footer-links{
 
     display:flex;
     gap:35px;
 
 }
 
-.footer-links a{
+.homepage .footer-links a{
 
     font-weight:600;
 
@@ -591,13 +572,13 @@ footer{
 
 }
 
-.footer-links a:hover{
+.homepage .footer-links a:hover{
 
     color:#2563eb;
 
 }
 
-.footer-bottom{
+.homepage .footer-bottom{
 
     border-top:1px solid #e2e8f0;
 
@@ -615,21 +596,21 @@ footer{
 
 @media (max-width:992px){
 
-    .hero-grid,
-    .feature-grid,
-    .steps{
+    .homepage .hero-grid,
+    .homepage .feature-grid,
+    .homepage .steps{
 
         grid-template-columns:1fr;
 
     }
 
-    .hero{
+    .homepage .hero{
 
         text-align:center;
 
     }
 
-    .hero-buttons{
+    .homepage .hero-buttons{
 
         justify-content:center;
 
@@ -637,13 +618,13 @@ footer{
 
     }
 
-    .hero-content h1{
+    .homepage .hero-content h1{
 
         font-size:3rem;
 
     }
 
-    .browser{
+    .homepage .browser{
 
         width:100%;
         max-width:430px;
@@ -651,7 +632,7 @@ footer{
 
     }
 
-    .footer-top{
+    .homepage .footer-top{
 
         flex-direction:column;
 
@@ -661,7 +642,7 @@ footer{
 
     }
 
-    .footer-links{
+    .homepage .footer-links{
 
         justify-content:center;
 
@@ -669,7 +650,7 @@ footer{
 
     }
 
-    .nav-links{
+    .homepage .nav-links{
 
         display:none;
 
@@ -679,27 +660,26 @@ footer{
 
 @media (max-width:576px){
 
-    section{
-
+.homepage .homepage section{
         padding:70px 0;
 
     }
 
-    .hero-content h1{
+    .homepage .hero-content h1{
 
         font-size:2.4rem;
 
     }
 
-    .features h2,
-    .how h2,
-    .cta h2{
+    .homepage .features h2,
+   .homepage .how h2,
+    .homepage .cta h2{
 
         font-size:2rem;
 
     }
 
-    .browser{
+    .homepage .browser{
 
         height:450px;
 
