@@ -1,32 +1,39 @@
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
+
+// ============================================
+// Ensure Upload Directories Exist
+// ============================================
+
+const uploadDirectories = {
+    profileImage: "uploads/profiles",
+    resume: "uploads/resumes",
+    projectImage: "uploads/projects",
+    certificateImage: "uploads/certificates"
+};
+
+Object.values(uploadDirectories).forEach((dir) => {
+    fs.mkdirSync(path.resolve(dir), { recursive: true });
+});
+
+// ============================================
+// Multer Storage
+// ============================================
 
 const storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
 
-        if (file.fieldname === "profileImage") {
+        if (uploadDirectories[file.fieldname]) {
 
-            cb(null, "uploads/profiles");
+            cb(null, uploadDirectories[file.fieldname]);
 
-        }
+        } else {
 
-        else if (file.fieldname === "resume") {
-
-            cb(null, "uploads/resumes");
+            cb(new Error("Invalid upload field."), null);
 
         }
-
-        else if (file.fieldname === "projectImage") {
-
-            cb(null, "uploads/projects");
-
-        }
-        else if (file.fieldname === "certificateImage") {
-
-    cb(null, "uploads/certificates");
-
-}
 
     },
 
@@ -44,41 +51,40 @@ const storage = multer.diskStorage({
 
 });
 
+// ============================================
+// File Filter
+// ============================================
+
 const fileFilter = (req, file, cb) => {
 
-   if (
-
-    file.fieldname === "profileImage" ||
-
-    file.fieldname === "projectImage" ||
-
-    file.fieldname === "certificateImage"
-
-){
+    if (
+        file.fieldname === "profileImage" ||
+        file.fieldname === "projectImage" ||
+        file.fieldname === "certificateImage"
+    ) {
 
         const allowedTypes = [
+            ".jpg",
+            ".jpeg",
+            ".png",
+            ".webp"
+        ];
 
-".jpg",
-
-".jpeg",
-
-".png",
-
-".webp"
-
-];
-
-        const extension = path.extname(file.originalname).toLowerCase();
+        const extension = path
+            .extname(file.originalname)
+            .toLowerCase();
 
         if (allowedTypes.includes(extension)) {
 
             cb(null, true);
 
-        }
+        } else {
 
-        else {
-
-            cb(new Error("Only JPG, JPEG and PNG images are allowed."));
+            cb(
+                new Error(
+                    "Only JPG, JPEG, PNG and WEBP images are allowed."
+                )
+            );
 
         }
 
@@ -86,29 +92,41 @@ const fileFilter = (req, file, cb) => {
 
     else if (file.fieldname === "resume") {
 
-        const extension = path.extname(file.originalname).toLowerCase();
+        const extension = path
+            .extname(file.originalname)
+            .toLowerCase();
 
         if (extension === ".pdf") {
 
             cb(null, true);
 
-        }
+        } else {
 
-        else {
-
-            cb(new Error("Only PDF files are allowed."));
+            cb(
+                new Error("Only PDF files are allowed.")
+            );
 
         }
 
     }
 
+    else {
+
+        cb(new Error("Invalid upload field."));
+
+    }
+
 };
+
+// ============================================
+// Upload Middleware
+// ============================================
 
 const upload = multer({
 
-    storage: storage,
+    storage,
 
-    fileFilter: fileFilter,
+    fileFilter,
 
     limits: {
 
