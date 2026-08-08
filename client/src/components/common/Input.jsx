@@ -13,12 +13,13 @@ function Input({
     return (
         <div className="space-y-2">
             {label && (
-<label className="mb-2 block text-sm font-semibold text-slate-700">
-                    {required && (
-                        <span className="ml-1 text-red-500">*</span>
-                    )}
-                </label>
-            )}
+    <label className="mb-2 block text-sm font-semibold text-slate-700">
+        {label}
+        {required && (
+            <span className="ml-1 text-red-500">*</span>
+        )}
+    </label>
+)}
 
             <input
                 type={type}
