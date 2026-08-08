@@ -112,6 +112,29 @@ const updateProfile = async (req, res) => {
             "theme"
 
         ];
+        const urlFields = [
+    "github",
+    "linkedin",
+    "website",
+    "twitter",
+    "leetcode",
+    "codechef"
+];
+
+urlFields.forEach(field => {
+
+    if (
+        updates[field] &&
+        !updates[field].startsWith("http://") &&
+        !updates[field].startsWith("https://")
+    ) {
+
+        updates[field] =
+            "https://" + updates[field];
+
+    }
+
+});
 
         allowedFields.forEach((field) => {
 

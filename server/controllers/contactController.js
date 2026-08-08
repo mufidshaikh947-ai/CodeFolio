@@ -72,13 +72,10 @@ await Contact.create({
 
 const recipient = user.portfolioEmail || user.email;
 
-await sendEmail({
-
+sendEmail({
     to: recipient,
-
     subject: `New Portfolio Contact • ${subject}`,
-
-    html: `
+html: `
         <div style="font-family: Arial, sans-serif; max-width: 650px; margin: auto;">
 
             <h2 style="color:#2563eb;">
@@ -123,8 +120,8 @@ await sendEmail({
             </small>
 
         </div>
-    `
-
+    `}).catch(err => {
+    console.error("Email failed:", err.message);
 });
 
         res.status(201).json({
