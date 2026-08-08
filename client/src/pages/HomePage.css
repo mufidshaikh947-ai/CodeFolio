@@ -9,16 +9,17 @@
 =========================================================== */
 
 
-
 /* ===========================================================
    COMMON
 =========================================================== */
 
-.homepage .container{    width:min(1200px,92%);
+.container{
+    width:min(1200px,92%);
     margin:auto;
 }
 
-.homepage section{    padding:90px 0;
+section{
+    padding:90px 0;
 }
 
 .section-subtitle{
@@ -34,7 +35,8 @@
    NAVBAR
 =========================================================== */
 
-.homepage .navbar{
+.navbar{
+
     position:sticky;
     top:0;
     z-index:1000;
@@ -47,7 +49,8 @@
 
 }
 
-.homepage .navbar .container{
+.navbar .container{
+
     height:82px;
 
     display:flex;
@@ -56,34 +59,38 @@
 
 }
 
-.homepage .logo{
+.logo{
+
     font-size:2rem;
     font-weight:800;
     color:#2563eb;
 
 }
 
-.homepage .nav-links{
+.nav-links{
+
     display:flex;
     align-items:center;
     gap:36px;
 
 }
 
-.homepage .nav-links{
+.nav-links a{
+
     font-weight:600;
     color:#475569;
     transition:.25s;
 
 }
 
-.homepage .nav-links a:hover{
+.nav-links a:hover{
 
     color:#2563eb;
 
 }
 
 .btn-nav{
+
     background:#2563eb;
     color:white !important;
 
@@ -93,7 +100,7 @@
 
 }
 
-.homepage .btn-nav:hover{
+.btn-nav:hover{
 
     background:#1d4ed8;
 
@@ -103,7 +110,8 @@
    HERO
 =========================================================== */
 
-.homepage .hero{
+.hero{
+
     background:linear-gradient(
         180deg,
         #f8fbff 0%,
@@ -114,7 +122,8 @@
 
 }
 
-.homepage .hero-grid{
+.hero-grid{
+
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:80px;
@@ -122,7 +131,8 @@
 
 }
 
-.homepage .hero-content h1{
+.hero-content h1{
+
     font-size:4rem;
     line-height:1.08;
     margin:28px 0;
@@ -131,7 +141,8 @@
 
 }
 
-.homepage .hero-content p{
+.hero-content p{
+
     font-size:1.15rem;
     line-height:1.9;
 
@@ -141,7 +152,8 @@
 
 }
 
-.homepage .hero-badge{
+.hero-badge{
+
     display:inline-block;
 
     padding:10px 22px;
@@ -156,14 +168,15 @@
 
 }
 
-.homepage .hero-buttons{
+.hero-buttons{
+
     display:flex;
     gap:20px;
 
 }
 
-.homepage .btn-primary,
-.homepage .btn-secondary{
+.btn-primary,
+.btn-secondary{
 
     padding:18px 34px;
 
@@ -175,41 +188,43 @@
 
 }
 
-.homepage .btn-primary{
+.btn-primary{
 
     background:#2563eb;
     color:white;
 
 }
 
-.homepage .btn-primary:hover{
+.btn-primary:hover{
 
     background:#1d4ed8;
     transform:translateY(-3px);
 
 }
 
-.homepage .btn-secondary{
+.btn-secondary{
 
     border:2px solid #2563eb;
     color:#2563eb;
 
 }
 
-.homepage .btn-secondary:hover{
+.btn-secondary:hover{
 
     background:#2563eb;
     color:white;
 
 }
 
-.homepage .hero-preview{
+.hero-preview{
+
     display:flex;
     justify-content:center;
 
 }
 
-.homepage .browser{
+.browser{
+
     width:470px;
     height:580px;
 
@@ -223,7 +238,8 @@
 
 }
 
-.homepage .browser-top{
+.browser-top{
+
     height:28px;
 
     background:#dbeafe;
@@ -234,7 +250,8 @@
 
 }
 
-.homepage .profile-circle{
+.profile-circle{
+
     width:70px;
     height:70px;
 
@@ -246,7 +263,8 @@
 
 }
 
-.homepage .line{
+.line{
+
     height:15px;
 
     background:#94a3b8;
@@ -257,13 +275,13 @@
 
 }
 
-.homepage .line-long{
+.line-long{
 
     width:100%;
 
 }
 
-.homepage .line-short{
+.line-short{
 
     width:60%;
 
@@ -271,7 +289,7 @@
 
 }
 
-.homepage .card-grid{
+.card-grid{
 
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -279,7 +297,7 @@
 
 }
 
-.homepage .card-grid div{
+.card-grid div{
 
     height:110px;
 
@@ -293,13 +311,13 @@
    FEATURES
 =========================================================== */
 
-.homepage .features{
+.features{
 
     background:white;
 
 }
 
-.homepage .features h2{
+.features h2{
 
     text-align:center;
 
@@ -307,7 +325,7 @@
 
 }
 
-.homepage .feature-grid{
+.feature-grid{
 
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -315,7 +333,7 @@
 
 }
 
-.homepage .feature-card{
+.feature-card{
 
     background:#f8fafc;
 
@@ -329,7 +347,7 @@
 
 }
 
-.homepage .feature-card:hover{
+.feature-card:hover{
 
     transform:translateY(-8px);
 
@@ -337,7 +355,7 @@
 
 }
 
-.homepage .icon{
+.icon{
 
     width:72px;
     height:72px;
@@ -356,7 +374,7 @@
 
 }
 
-.homepage .feature-card h3{
+.feature-card h3{
 
     font-size:1.4rem;
 
@@ -364,7 +382,7 @@
 
 }
 
-.homepage .feature-card p{
+.feature-card p{
 
     color:#64748b;
 
@@ -376,13 +394,13 @@
    HOW
 =========================================================== */
 
-.homepage .how{
+.how{
 
     background:#f8fbff;
 
 }
 
-.homepage .how h2{
+.how h2{
 
     text-align:center;
 
@@ -390,7 +408,7 @@
 
 }
 
-.homepage .steps{
+.steps{
 
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -398,7 +416,7 @@
 
 }
 
-.homepage .step{
+.step{
 
     background:white;
 
@@ -414,7 +432,7 @@
 
 }
 
-.homepage .step:hover{
+.step:hover{
 
     transform:translateY(-8px);
 
@@ -422,7 +440,7 @@
 
 }
 
-.homepage .step span{
+.step span{
 
     width:74px;
     height:74px;
@@ -445,7 +463,7 @@
 
 }
 
-.homepage .step h3{
+.step h3{
 
     margin-bottom:15px;
 
@@ -453,7 +471,7 @@
 
 }
 
-.homepage .step p{
+.step p{
 
     color:#64748b;
 
@@ -465,7 +483,7 @@
    CTA
 =========================================================== */
 
-.homepage .cta{
+.cta{
 
     background:linear-gradient(
         135deg,
@@ -479,7 +497,7 @@
 
 }
 
-.homepage .cta h2{
+.cta h2{
 
     font-size:3rem;
 
@@ -487,7 +505,7 @@
 
 }
 
-.homepage .cta p{
+.cta p{
 
     max-width:720px;
 
@@ -501,7 +519,7 @@
 
 }
 
-.homepage .btn-white{
+.btn-white{
 
     display:inline-block;
 
@@ -519,7 +537,7 @@
 
 }
 
-.homepage .btn-white:hover{
+.btn-white:hover{
 
     transform:translateY(-4px);
 
@@ -529,7 +547,7 @@
    FOOTER
 =========================================================== */
 
-.homepage .footer{
+footer{
 
     background:white;
 
@@ -537,7 +555,7 @@
 
 }
 
-.homepage .footer-top{
+.footer-top{
 
     padding:70px 0;
 
@@ -547,7 +565,7 @@
 
 }
 
-.homepage .footer-top p{
+.footer-top p{
 
     margin-top:12px;
 
@@ -555,14 +573,14 @@
 
 }
 
-.homepage .footer-links{
+.footer-links{
 
     display:flex;
     gap:35px;
 
 }
 
-.homepage .footer-links a{
+.footer-links a{
 
     font-weight:600;
 
@@ -572,13 +590,13 @@
 
 }
 
-.homepage .footer-links a:hover{
+.footer-links a:hover{
 
     color:#2563eb;
 
 }
 
-.homepage .footer-bottom{
+.footer-bottom{
 
     border-top:1px solid #e2e8f0;
 
@@ -596,21 +614,21 @@
 
 @media (max-width:992px){
 
-    .homepage .hero-grid,
-    .homepage .feature-grid,
-    .homepage .steps{
+    .hero-grid,
+    .feature-grid,
+    .steps{
 
         grid-template-columns:1fr;
 
     }
 
-    .homepage .hero{
+    .hero{
 
         text-align:center;
 
     }
 
-    .homepage .hero-buttons{
+    .hero-buttons{
 
         justify-content:center;
 
@@ -618,13 +636,13 @@
 
     }
 
-    .homepage .hero-content h1{
+    .hero-content h1{
 
         font-size:3rem;
 
     }
 
-    .homepage .browser{
+    .browser{
 
         width:100%;
         max-width:430px;
@@ -632,7 +650,7 @@
 
     }
 
-    .homepage .footer-top{
+    .footer-top{
 
         flex-direction:column;
 
@@ -642,7 +660,7 @@
 
     }
 
-    .homepage .footer-links{
+    .footer-links{
 
         justify-content:center;
 
@@ -650,7 +668,7 @@
 
     }
 
-    .homepage .nav-links{
+    .nav-links{
 
         display:none;
 
@@ -660,26 +678,27 @@
 
 @media (max-width:576px){
 
-.homepage .homepage section{
+    section{
+
         padding:70px 0;
 
     }
 
-    .homepage .hero-content h1{
+    .hero-content h1{
 
         font-size:2.4rem;
 
     }
 
-    .homepage .features h2,
-   .homepage .how h2,
-    .homepage .cta h2{
+    .features h2,
+    .how h2,
+    .cta h2{
 
         font-size:2rem;
 
     }
 
-    .homepage .browser{
+    .browser{
 
         height:450px;
 
