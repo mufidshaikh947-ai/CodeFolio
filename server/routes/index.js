@@ -27,7 +27,12 @@ router.get("/", (req, res) => {
     res.send("CodeFolio Backend is Running...");
 });
 
-
+router.get("/api/test", (req, res) => {
+    res.json({
+        success: true,
+        message: "API is working"
+    });
+});
 
 router.use("/api/auth", authRoutes);
 
