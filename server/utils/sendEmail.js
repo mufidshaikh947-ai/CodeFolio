@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-transporter.verify(function (error, success) {
+transporter.verify((error, success) => {
 
     if (error) {
 
@@ -19,24 +19,29 @@ transporter.verify(function (error, success) {
 
     } else {
 
-        console.log("SMTP READY");
+        console.log("✅ SMTP Connected Successfully");
 
     }
 
 });
 
-async function sendEmail({ to, subject, html }) {
-
-    console.log("Sending email...");
+async function sendEmail({
+    to,
+    subject,
+    html
+}) {
 
     await transporter.sendMail({
-        from: `"CodeFolio Portfolio" <${process.env.EMAIL_USER}>`,
-        to,
-        subject,
-        html
-    });
 
-    console.log("Email sent.");
+        from: `"CodeFolio Portfolio" <${process.env.EMAIL_USER}>`,
+
+        to,
+
+        subject,
+
+        html
+
+    });
 
 }
 
