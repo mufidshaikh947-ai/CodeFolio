@@ -74,6 +74,10 @@ Project.find({ user: user._id }).sort({
 
     username: user.username,
 
+    isPro: user.isPro,
+
+    customDomain: user.customDomain,
+
     title: user.title,
 
     headline: user.headline,

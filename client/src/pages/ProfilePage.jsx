@@ -16,6 +16,7 @@ import FileUpload from "../components/ui/FileUpload";
 import FilePreview from "../components/ui/FilePreview";
 import FormActions from "../components/ui/FormActions";
 import LoadingState from "../components/ui/LoadingState";
+import StatusBadge from "../components/ui/StatusBadge";
 
 import { notifyPortfolioUpdate } from "../utils/livePreview";
 import {
@@ -37,6 +38,7 @@ function ProfilePage() {
 
     const [profileImage, setProfileImage] = useState("");
     const [resume, setResume] = useState("");
+    const [isPro, setIsPro] = useState(false);
 
     const [uploadingImage, setUploadingImage] = useState(false);
     const [uploadingResume, setUploadingResume] = useState(false);
@@ -67,6 +69,7 @@ function ProfilePage() {
 
                 setProfileImage(response.assets.profileImage || "");
                 setResume(response.assets.resume || "");
+                setIsPro(response.profile.isPro || false);
 
             }
 
@@ -196,6 +199,7 @@ notifyPortfolioUpdate();
 
             setProfileImage(response.assets.profileImage || "");
             setResume(response.assets.resume || "");
+            setIsPro(response.profile.isPro || false);
 
             toast.success("Profile updated successfully.");
 notifyPortfolioUpdate();
@@ -236,6 +240,12 @@ notifyPortfolioUpdate();
                 title="Profile Settings"
 
                 description="Manage your personal information, public profile, social links and portfolio preferences."
+
+                action={
+                    isPro && (
+                        <StatusBadge color="amber">PRO</StatusBadge>
+                    )
+                }
 
             />
 
@@ -559,33 +569,51 @@ notifyPortfolioUpdate();
 
                         />
 
-                        <Select
+                        <div>
 
-                            label="Portfolio Template"
+                            <Select
 
-                            register={register("templateId")}
+                                label="Portfolio Template"
 
-                            options={[
+                                register={register("templateId")}
 
-                                {
+                                options={[
 
-                                    value: "minimal",
+                                    {
 
-                                    label: "Minimal"
+                                        value: "minimal",
 
-                                },
+                                        label: "Minimal"
 
-                                {
+                                    },
 
-                                    value: "modern",
+                                    {
 
-                                    label: "Modern"
+                                        value: "modern",
 
-                                }
+                                        label: isPro ? "Modern" : "Modern (PRO)",
 
-                            ]}
+                                        disabled: !isPro
 
-                        />
+                                    }
+
+                                ]}
+
+                            />
+
+                            {!isPro && (
+
+                                <div className="mt-3 flex items-center gap-2 text-xs font-medium text-slate-500">
+
+                                    <StatusBadge color="amber">PRO</StatusBadge>
+
+                                    <span>Upgrade to unlock the Modern template.</span>
+
+                                </div>
+
+                            )}
+
+                        </div>
 
                     </FormGrid>
 

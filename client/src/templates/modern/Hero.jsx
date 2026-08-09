@@ -9,6 +9,8 @@ import {
     HiArrowRight
 } from "react-icons/hi";
 
+import { BadgeCheck } from "lucide-react";
+
 function Hero({
     profile,
     assets,
@@ -102,11 +104,27 @@ function Hero({
 
                         </p>
 
-                        <h1 className="text-6xl font-black leading-none tracking-tight text-white lg:text-7xl xl:text-8xl">
+                        <div className="flex flex-wrap items-center gap-4">
 
-                            {profile?.name}
+                            <h1 className="text-6xl font-black leading-none tracking-tight text-white lg:text-7xl xl:text-8xl">
 
-                        </h1>
+                                {profile?.name}
+
+                            </h1>
+
+                            {profile?.isPro && (
+
+                                <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-300">
+
+                                    <BadgeCheck size={16} />
+
+                                    Verified Pro
+
+                                </span>
+
+                            )}
+
+                        </div>
 
                         <h2
                             className="
@@ -140,6 +158,18 @@ function Hero({
                             }
 
                         </p>
+
+                        {profile?.customDomain && (
+
+                            <div className="mt-7 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-300">
+
+                                <span className="h-2 w-2 rounded-full bg-emerald-400" />
+
+                                Connected domain: {profile.customDomain}
+
+                            </div>
+
+                        )}
 
                         {/* Buttons */}
 

@@ -28,6 +28,18 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+
+        isPro: {
+            type: Boolean,
+            default: false
+        },
+
+        customDomain: {
+            type: String,
+            default: "",
+            trim: true
+        },
+
         headline: {
     type: String,
     default: "",

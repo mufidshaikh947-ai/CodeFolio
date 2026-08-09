@@ -23,6 +23,8 @@ const getProfile = async (req, res) => {
                 name: user.name,
                 username: user.username,
                 email: user.email,
+                isPro: user.isPro,
+                customDomain: user.customDomain,
                 title: user.title,
                 headline: user.headline,
                 about: user.about,
@@ -108,6 +110,8 @@ const updateProfile = async (req, res) => {
             "profileImage",
             "resume",
 
+            "customDomain",
+
             "templateId",
             "theme"
 
@@ -146,6 +150,30 @@ urlFields.forEach(field => {
 
         });
 
+        const existingUser = await User.findById(req.user.id).select("isPro");
+
+        if (!existingUser) {
+
+            return res.status(404).json({
+
+                success: false,
+                message: "User not found."
+
+            });
+
+        }
+
+        if (updates.templateId === "modern" && !existingUser.isPro) {
+
+            return res.status(403).json({
+
+                success: false,
+                message: "Modern template is available to Pro users only."
+
+            });
+
+        }
+
         const user = await User.findByIdAndUpdate(
 
             req.user.id,
@@ -182,6 +210,8 @@ urlFields.forEach(field => {
                 name: user.name,
                 username: user.username,
                 email: user.email,
+                isPro: user.isPro,
+                customDomain: user.customDomain,
                 title: user.title,
                 headline: user.headline,
                 about: user.about,

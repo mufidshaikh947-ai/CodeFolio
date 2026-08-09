@@ -1,43 +1,4 @@
-
-console.log({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    user: process.env.EMAIL_USER,
-    passExists: !!process.env.EMAIL_PASS
-});
-const nodemailer = require("nodemailer");
-
-const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: Number(process.env.EMAIL_PORT),
-    secure: true ,
-
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-
-    requireTLS: true,
-
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 10000
-});
-
-transporter.verify((error, success) => {
-
-    if (error) {
-
-        console.error("SMTP ERROR:");
-        console.error(error);
-
-    } else {
-
-        console.log("✅ SMTP Connected Successfully");
-
-    }
-
-});
+const sgMail = require("@sendgrid/mail");
 
 async function sendEmail({
     to,
@@ -45,11 +6,22 @@ async function sendEmail({
     html
 }) {
 
-    await transporter.sendMail({
+    const apiKey = process.env.SENDGRID_API_KEY;
+    const from = process.env.SENDGRID_FROM_EMAIL;
 
-        from: `"CodeFolio Portfolio" <${process.env.EMAIL_USER}>`,
+    if (!apiKey || !from) {
+
+        throw new Error("SendGrid email configuration is missing.");
+
+    }
+
+    sgMail.setApiKey(apiKey);
+
+    await sgMail.send({
 
         to,
+
+        from: `CodeFolio Portfolio <${from}>`,
 
         subject,
 

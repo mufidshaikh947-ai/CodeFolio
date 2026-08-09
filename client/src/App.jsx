@@ -11,6 +11,7 @@ import ExperiencePage from "./pages/ExperiencePage";
 import EducationPage from "./pages/EducationPage";
 import CertificatesPage from "./pages/CertificatesPage";
 import MessagesPage from "./pages/MessagesPage";
+import PremiumPage from "./pages/PremiumPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PortfolioPage from "./pages/PortfolioPage";
 
@@ -78,6 +79,8 @@ function App() {
     <Route path="/certificates" element={<CertificatesPage />} />
 
     <Route path="/messages" element={<MessagesPage />} />
+
+    <Route path="/premium" element={<PremiumPage />} />
 
 </Route>
 

@@ -86,17 +86,8 @@ sendEmail({
         <p>${message}</p>
     `
 }).catch(error => {
-    console.error("Email Error:", error);
+    console.error("SendGrid Email Error:", error);
 });
-
-return;
-        res.status(201).json({
-
-            success: true,
-            message: "Message sent successfully.",
-            
-
-        });
 
     }
 

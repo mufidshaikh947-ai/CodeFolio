@@ -1,3 +1,5 @@
+import { BadgeCheck } from "lucide-react";
+
 function Hero({ profile, assets, socialLinks }) {
 
     const API_URL = import.meta.env.VITE_API_URL;
@@ -39,11 +41,27 @@ function Hero({ profile, assets, socialLinks }) {
 
                         </p>
 
-                        <h1 className="text-7xl font-bold tracking-tight text-slate-900">
+                        <div className="flex flex-wrap items-center gap-3">
 
-                            {profile.name}
+                            <h1 className="text-7xl font-bold tracking-tight text-slate-900">
 
-                        </h1>
+                                {profile.name}
+
+                            </h1>
+
+                            {profile?.isPro && (
+
+                                <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-700">
+
+                                    <BadgeCheck size={16} />
+
+                                    Verified Pro
+
+                                </span>
+
+                            )}
+
+                        </div>
 
                         <h2 className="mt-5 text-4xl font-medium text-slate-700">
 
@@ -62,6 +80,18 @@ function Hero({ profile, assets, socialLinks }) {
                             }
 
                         </p>
+
+                        {profile?.customDomain && (
+
+                            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700">
+
+                                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+
+                                Connected domain: {profile.customDomain}
+
+                            </div>
+
+                        )}
 
                         <div className="mt-10 flex flex-wrap gap-5">
 

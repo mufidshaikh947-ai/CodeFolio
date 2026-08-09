@@ -6,7 +6,8 @@ import {
     Briefcase,
     GraduationCap,
     Award,
-    Mail
+    Mail,
+    Crown
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
@@ -18,7 +19,8 @@ const navigation = [
     { name: "Experience", path: "/experience", icon: Briefcase },
     { name: "Education", path: "/education", icon: GraduationCap },
     { name: "Certificates", path: "/certificates", icon: Award },
-    { name: "Messages", path: "/messages", icon: Mail }
+    { name: "Messages", path: "/messages", icon: Mail },
+    { name: "Premium", path: "/premium", icon: Crown }
 ];
 
 function Sidebar({ sidebarOpen }) {
