@@ -65,41 +65,31 @@ await Contact.create({
 });
 
 res.status(201).json({
-
     success: true,
-
     message: "Message sent successfully."
-
 });
 
 const recipient = user.portfolioEmail || user.email;
 
 sendEmail({
-
     to: recipient,
-
     subject: `New Portfolio Contact • ${subject}`,
-
     html: `
         <h2>New Portfolio Contact</h2>
 
         <p><b>Name:</b> ${name}</p>
-
         <p><b>Email:</b> ${email}</p>
-
         <p><b>Subject:</b> ${subject}</p>
 
         <hr>
 
         <p>${message}</p>
     `
-
 }).catch(error => {
-
     console.error("Email Error:", error);
-
 });
 
+return;
         res.status(201).json({
 
             success: true,
