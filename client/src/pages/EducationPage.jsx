@@ -220,7 +220,7 @@ function EducationPage() {
                             register={register("startYear", {
                                 required: "Start year is required",
                                 setValueAs: value =>
-                                    value ? `${value}-01-01` : ""
+                                    value ? Number(value) : undefined
                             })}
                             error={errors.startYear}
                         />
@@ -232,9 +232,9 @@ function EducationPage() {
                             max="2100"
                             placeholder="2026"
                             register={register("endYear", {
-                                setValueAs: value =>
-                                    value ? `${value}-01-01` : ""
-                            })}
+    setValueAs: value =>
+        value ? Number(value) : undefined
+})}
                             error={errors.endYear}
                         />
 
