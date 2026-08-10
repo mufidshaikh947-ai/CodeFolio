@@ -61,10 +61,10 @@ function Projects({ projects }) {
                                                 <img
 
                                                     src={
-                                                        project.projectImage
-    ? `${API_URL}/${project.projectImage}`
-    : "https://placehold.co/700x500"
-                                                    }
+    project.image
+        ? `${API_URL}/${project.image}`
+        : "https://placehold.co/700x500"
+}
 
                                                     alt={project.title}
 
@@ -132,8 +132,13 @@ function Projects({ projects }) {
 
                                                         {
 
-                                                            project.techStack?.map((tech, index) => (
-
+(
+    Array.isArray(project.technologies)
+        ? project.technologies
+        : []
+).map((tech, index) => (
+    ...
+))
                                                                 <span
 
                                                                     key={index}
