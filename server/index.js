@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const express = require("express");
 const connectDB = require("./config/db");
-const seedDemoUsers = require("./utils/demoData");
 const path = require("path");
 const cors = require("cors");
 const app = express();
@@ -48,7 +47,6 @@ async function startServer() {
 
     await connectDB();
 
-    await seedDemoUsers();
 
     app.listen(PORT, () => {
 

@@ -13,7 +13,19 @@ function SEO({
         <Helmet>
 
             {/* Basic SEO */}
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+/>
 
+<meta
+    charSet="UTF-8"
+/>
+
+<meta
+    name="theme-color"
+    content="#2563eb"
+/>
             <title>{title}</title>
 
             <meta
@@ -26,10 +38,10 @@ function SEO({
                 content={keywords}
             />
 
-            <meta
-                name="author"
-                content={title}
-            />
+          <meta
+    name="author"
+    content="CodeFolio"
+/>
 
             <meta
                 name="robots"
@@ -42,6 +54,11 @@ function SEO({
             />
 
             {/* Open Graph */}
+
+<meta
+    property="og:locale"
+    content="en_US"
+/>
 
             <meta
                 property="og:type"
@@ -58,10 +75,14 @@ function SEO({
                 content={description}
             />
 
-            <meta
-                property="og:image"
-                content={image}
-            />
+            {image && (
+
+<meta
+    property="og:image"
+    content={image}
+/>
+
+)}
 
             <meta
                 property="og:url"
@@ -90,10 +111,14 @@ function SEO({
                 content={description}
             />
 
-            <meta
-                name="twitter:image"
-                content={image}
-            />
+            {image && (
+
+<meta
+    property="twitter:image"
+    content={image}
+/>
+
+)}
 
         </Helmet>
 

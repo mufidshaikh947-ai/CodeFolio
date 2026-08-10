@@ -8,6 +8,24 @@ import SEO from "../components/common/SEO";
 
 import { subscribePortfolioUpdates } from "../utils/livePreview";
 
+function createMetaDescription(profile) {
+
+    const description =
+        profile?.about ||
+        "Developer portfolio showcasing projects, skills and experience.";
+
+    const normalizedDescription = description.replace(/\s+/g, " ").trim();
+
+    if (normalizedDescription.length <= 160) {
+
+        return normalizedDescription;
+
+    }
+
+    return `${normalizedDescription.slice(0, 157).trimEnd()}...`;
+
+}
+
 function PortfolioPage() {
 
     const { username } = useParams();
@@ -129,21 +147,26 @@ const API_URL = import.meta.env.VITE_API_URL;
 
         templateMap.minimal;
 
+    const profile = portfolio.profile;
+    const siteUrl = window.location.origin;
+    const canonicalUrl = `${siteUrl}/${encodeURIComponent(username)}`;
+    const title = `${profile?.name || "Developer"} | ${
+        profile?.title?.trim() || "Developer Portfolio"
+    }`;
+    const description = createMetaDescription(profile);
+    const image = portfolio.assets?.profileImage
+    ? `${API_URL}/${portfolio.assets.profileImage}`
+    : `${siteUrl}/og-image.png`;
+
     return (
 
         <>
 
             <SEO
 
-                title={`${portfolio.profile?.name || "Portfolio"} | ${portfolio.profile?.title || "Developer"}`}
+                title={title}
 
-                description={
-
-                    portfolio.profile?.headline ||
-
-                    "Professional developer portfolio."
-
-                }
+                description={description}
 
                 keywords={
 
@@ -157,13 +180,9 @@ const API_URL = import.meta.env.VITE_API_URL;
 
                 }
 
-               image={
-    portfolio.assets?.profileImage
-        ? `${import.meta.env.VITE_API_URL}/${portfolio.assets.profileImage}`
-        : ""
-}
+                image={image}
 
-                url={window.location.href}
+                url={canonicalUrl}
 
             />
 
