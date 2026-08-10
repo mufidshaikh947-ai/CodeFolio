@@ -1,6 +1,11 @@
 function Projects({ projects }) {
 
     const API_URL = import.meta.env.VITE_API_URL;
+
+    console.log("========== PROJECTS ==========");
+    console.log("API_URL:", API_URL);
+    console.log("Projects:", projects);
+
     return (
 
 <section className="py-16 lg:py-20">            <div className="mx-auto max-w-7xl px-8">
@@ -31,7 +36,12 @@ function Projects({ projects }) {
 
                             {
 
-                                projects.map((project) => (
+                                projects.map((project) => 
+                                {
+
+    console.log("Project Object:", project);
+
+    return (
 
                                     <div
 
@@ -59,26 +69,24 @@ function Projects({ projects }) {
                                             <div className="p-8">
 
                                                 <img
-
-                                                    src={
-    project.image
-        ? `${API_URL}/${project.image}`
-        : "https://placehold.co/700x500"
-}
-
-                                                    alt={project.title}
-
-                                                    className="
-                                                        h-[300px]
-                                                        w-full
-                                                        rounded-3xl
-                                                        object-cover
-                                                        transition-all
-                                                        duration-500
-                                                        hover:scale-[1.03]
-                                                    "
-
-                                                />
+    src={`${API_URL}/${project.image}`}
+    alt={project.title}
+    className="
+        h-[300px]
+        w-full
+        rounded-3xl
+        object-cover
+        transition-all
+        duration-500
+        hover:scale-[1.03]
+    "
+    onLoad={() => {
+        console.log("Image Loaded:", `${API_URL}/${project.image}`);
+    }}
+    onError={(e) => {
+        console.log("Image Failed:", e.target.src);
+    }}
+/>
 
                                             </div>
 
@@ -138,7 +146,8 @@ function Projects({ projects }) {
         : []
 ).map((tech, index) => (
     ...
-))
+);
+})
                                                                 <span
 
                                                                     key={index}
