@@ -11,8 +11,7 @@ function formatDate(date) {
 
 function Certificates({ certificates }) {
 
-    const API_URL = import.meta.env.VITE_API_URL;
-
+import { API_BASE_URL } from "../../constants/api";
 
     return (
 
@@ -60,8 +59,7 @@ function Certificates({ certificates }) {
 
                                                 <img
 
-src={`${API_URL}/${certificate.certificateImage}`}
-                                                    alt={certificate.title}
+src={`${API_BASE_URL}/${certificate.certificateImage}`}                                                    alt={certificate.title}
 
                                                     className="h-64 w-full object-cover"
 

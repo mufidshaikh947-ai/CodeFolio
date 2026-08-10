@@ -2,13 +2,14 @@ import { BadgeCheck } from "lucide-react";
 
 function Hero({ profile, assets, socialLinks }) {
 
-    const API_URL = import.meta.env.VITE_API_URL;
+   import { API_BASE_URL } from "../../constants/api";
+
     const imageUrl = assets?.profileImage
-    ? `${API_URL}/${assets.profileImage}`
+    ? `${API_BASE_URL}/${assets.profileImage}`
     : "https://placehold.co/500x500?text=Profile";
 
     const resumeUrl = assets?.resume
-    ? `${API_URL}/${assets.resume}`
+    ? `${API_BASE_URL}/${assets.resume}`
     : null;
 
     return (

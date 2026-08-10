@@ -1,11 +1,9 @@
+import { API_BASE_URL } from "../../constants/api";
 function Projects({ projects }) {
 
-    const API_URL = import.meta.env.VITE_API_URL;
+    
 
-    console.log("========== PROJECTS ==========");
-    console.log("API_URL:", API_URL);
-    console.log("Projects:", projects);
-
+   
     return (
 
 <section className="py-16 lg:py-20">            <div className="mx-auto max-w-7xl px-8">
@@ -69,7 +67,7 @@ function Projects({ projects }) {
                                             <div className="p-8">
 
                                                 <img
-    src={`${API_URL}/${project.image}`}
+    src={`${API_BASE_URL}/${project.image}`}
     alt={project.title}
     className="
         h-[300px]
@@ -80,11 +78,18 @@ function Projects({ projects }) {
         duration-500
         hover:scale-[1.03]
     "
-    onLoad={() => {
-        console.log("Image Loaded:", `${API_URL}/${project.image}`);
+     onLoad={() => {
+        console.log(
+            "Loaded:",
+            `${API_BASE_URL}/${project.image}`
+        );
     }}
     onError={(e) => {
-        console.log("Image Failed:", e.target.src);
+        console.log(
+            "FAILED:",
+            `${API_BASE_URL}/${project.image}`
+        );
+        console.log(e);
     }}
 />
 
@@ -137,17 +142,25 @@ function Projects({ projects }) {
                                                     </p>
 
                                                     <div className="mt-10 flex flex-wrap gap-3">
-
-                                                        {
-
-(
-    Array.isArray(project.technologies)
-        ? project.technologies
-        : []
-).map((tech, index) => (
-    ...
-);
-})
+    {(project.technologies || []).map((tech, index) => (
+        <span
+            key={index}
+            className="
+                rounded-full
+                border
+                border-white/10
+                bg-white/5
+                px-4
+                py-2
+                text-sm
+                text-slate-200
+            "
+        >
+            {tech}
+        </span>
+    ))}
+</div>
+)
                                                                 <span
 
                                                                     key={index}
