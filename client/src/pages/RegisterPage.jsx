@@ -15,10 +15,14 @@ function RegisterPage() {
   const [loading, setLoading] = useState(false);
 
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm({
+  defaultValues: {
+    plan: "free"
+  }
+});
 
   async function onSubmit(data) {
     setLoading(true);
@@ -111,6 +115,73 @@ function RegisterPage() {
           error={errors.password}
           autoComplete="new-password"
         />
+<div className="rounded-xl border border-slate-200 p-5">
+
+  <h3 className="text-sm font-semibold text-slate-900">
+
+    Choose Your Plan
+
+  </h3>
+
+  <p className="mt-1 text-xs text-slate-500">
+
+    Select how you'd like to start using CodeFolio.
+
+  </p>
+
+  <label className="mt-5 flex cursor-pointer items-start gap-3">
+
+    <input
+      type="radio"
+      value="free"
+      {...register("plan")}
+    />
+
+    <div>
+
+      <p className="font-semibold">
+
+        Free
+
+      </p>
+
+      <p className="text-sm text-slate-500">
+
+        Minimal template with all essential portfolio features.
+
+      </p>
+
+    </div>
+
+  </label>
+
+  <label className="mt-4 flex cursor-pointer items-start gap-3">
+
+    <input
+      type="radio"
+      value="pro"
+      {...register("plan")}
+    />
+
+    <div>
+
+      <p className="font-semibold">
+
+        Pro Preview
+
+      </p>
+
+      <p className="text-sm text-slate-500">
+
+        Unlock premium features for evaluation purposes.
+
+      </p>
+
+    </div>
+
+  </label>
+
+</div>
 
         <Button
           type="submit"

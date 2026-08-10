@@ -19,7 +19,7 @@ function PremiumPage() {
 
     const [fetching, setFetching] = useState(true);
     const [saving, setSaving] = useState(false);
-
+const [isPro, setIsPro] = useState(false);
     const {
         register,
         handleSubmit,
@@ -34,10 +34,11 @@ function PremiumPage() {
 
                 const response = await getProfile();
 
-                reset({
-                    customDomain: response.profile.customDomain || ""
-                });
+                setIsPro(response.profile.isPro);
 
+reset({
+    customDomain: response.profile.customDomain || ""
+});
             }
 
             catch {
@@ -107,8 +108,13 @@ function PremiumPage() {
             <PageHeader
                 title="Premium"
                 description="Manage premium portfolio settings and simulated custom domain connections."
-                action={<StatusBadge color="amber">PREMIUM</StatusBadge>}
-            />
+action={
+    <StatusBadge
+        color={isPro ? "emerald" : "slate"}
+    >
+        {isPro ? "PRO PLAN" : "FREE PLAN"}
+    </StatusBadge>
+}            />
 
             <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -118,7 +124,23 @@ function PremiumPage() {
                         title="Custom Domain"
                         subtitle="Save the domain you want to display on your portfolio. This is a simulated connection and does not configure DNS, SSL or hosting."
                     />
+<div className="mb-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
 
+    <h4 className="font-semibold">
+
+        Current Plan
+
+    </h4>
+
+    <p className="mt-2 text-slate-600">
+
+        {isPro
+            ? "You are using the Pro Preview plan. Premium features are unlocked."
+            : "You are using the Free plan. Premium features remain locked."}
+
+    </p>
+
+</div>
                     <Input
                         label="Custom Domain"
                         placeholder="portfolio.example.com"

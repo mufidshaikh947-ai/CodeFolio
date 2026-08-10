@@ -11,6 +11,7 @@ const registerUser = async (req, res) => {
         const username = req.body.username?.trim().toLowerCase();
         const email = req.body.email?.trim().toLowerCase();
         const password = req.body.password;
+const plan = req.body.plan || "free";
 
         if (!name || !username || !email || !password) {
             return res.status(400).json({
@@ -62,22 +63,27 @@ const registerUser = async (req, res) => {
 
         const user = await User.create({
             name,
-            username,
-            email,
-            password: hashedPassword
+username,
+email,
+password: hashedPassword,
+
+isPro: plan === "pro"
         });
 
         res.status(201).json({
             success: true,
             message: "Registration successful.",
-            user: {
-                _id: user._id,
-                name: user.name,
-                username: user.username,
-                email: user.email,
-                createdAt: user.createdAt,
-                updatedAt: user.updatedAt
-            }
+           user: {
+
+    _id: user._id,
+    name: user.name,
+    username: user.username,
+    email: user.email,
+    isPro: user.isPro,
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt
+
+}
         });
 
     } catch (error) {
@@ -136,14 +142,17 @@ const loginUser = async (req, res) => {
             success: true,
             message: "Login successful.",
             token,
-            user: {
-                _id: user._id,
-                name: user.name,
-                username: user.username,
-                email: user.email,
-                createdAt: user.createdAt,
-                updatedAt: user.updatedAt
-            }
+          user: {
+
+    _id: user._id,
+    name: user.name,
+    username: user.username,
+    email: user.email,
+    isPro: user.isPro,
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt
+
+}
         });
 
     } catch (error) {
