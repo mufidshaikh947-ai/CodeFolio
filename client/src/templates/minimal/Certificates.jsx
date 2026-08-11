@@ -1,3 +1,6 @@
+import { API_BASE_URL } from "../../constants/api";
+
+
 function formatDate(date) {
 
     if (!date) return "";
@@ -11,7 +14,6 @@ function formatDate(date) {
 
 function Certificates({ certificates }) {
 
-import { API_BASE_URL } from "../../constants/api";
 
     return (
 
@@ -58,12 +60,10 @@ import { API_BASE_URL } from "../../constants/api";
                                             certificate.certificateImage ? (
 
                                                 <img
-
-src={`${API_BASE_URL}/${certificate.certificateImage}`}                                                    alt={certificate.title}
-
-                                                    className="h-64 w-full object-cover"
-
-                                                />
+    src={`${API_BASE_URL}/${certificate.certificateImage}`}
+    alt={certificate.title}
+    className="h-64 w-full object-cover"
+/>
 
                                             ) : (
 

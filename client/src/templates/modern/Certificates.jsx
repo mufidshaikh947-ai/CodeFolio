@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "../../constants/api";
+
 function formatDate(date) {
 
     if (!date) return "";
@@ -11,7 +13,6 @@ function formatDate(date) {
 
 function Certificates({ certificates }) {
 
-import { API_BASE_URL } from "../../constants/api";
     return (
 
 <section className="py-16 lg:py-20">            <div className="mx-auto max-w-7xl px-8">

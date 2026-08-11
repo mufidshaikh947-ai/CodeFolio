@@ -1,8 +1,8 @@
 import { BadgeCheck } from "lucide-react";
+   import { API_BASE_URL } from "../../constants/api";
 
 function Hero({ profile, assets, socialLinks }) {
 
-   import { API_BASE_URL } from "../../constants/api";
 
     const imageUrl = assets?.profileImage
     ? `${API_BASE_URL}/${assets.profileImage}`
