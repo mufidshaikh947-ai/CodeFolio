@@ -1,4 +1,4 @@
-                    import {
+import {
     FaGithub,
     FaLinkedin,
     FaGlobe
@@ -11,6 +11,8 @@ import {
 
 import { BadgeCheck } from "lucide-react";
 
+import { API_BASE_URL } from "../../constants/api";
+
 function Hero({
     profile,
     assets,
@@ -18,15 +20,11 @@ function Hero({
     skills = []
 }) {
 
-import { API_BASE_URL } from "../../constants/api";
-
-   const imageUrl =
-    assets?.profileImage
+    const imageUrl = assets?.profileImage
         ? `${API_BASE_URL}/${assets.profileImage}`
-        : "https://placehold.co/800x800";
+        : "https://placehold.co/800x800?text=Profile";
 
-    const resumeUrl =
-    assets?.resume
+    const resumeUrl = assets?.resume
         ? `${API_BASE_URL}/${assets.resume}`
         : null;
 
@@ -35,8 +33,7 @@ import { API_BASE_URL } from "../../constants/api";
         .sort((a, b) => a.displayOrder - b.displayOrder)
         .slice(0, 5);
 
-    const socialButton =
-        `
+    const socialButton = `
         flex
         h-14
         w-14
@@ -54,10 +51,9 @@ import { API_BASE_URL } from "../../constants/api";
         hover:-translate-y-1
         hover:border-cyan-400
         hover:text-cyan-400
-        `;
+    `;
 
     return (
-
         <section className="relative overflow-hidden bg-[#070B1A] text-white">
 
             {/* Grid */}
@@ -65,18 +61,14 @@ import { API_BASE_URL } from "../../constants/api";
             <div className="absolute inset-0 opacity-[0.04]">
 
                 <div
-
                     className="h-full w-full"
-
                     style={{
-                        backgroundImage:
-                            `
+                        backgroundImage: `
                             linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
                             linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px)
-                            `,
+                        `,
                         backgroundSize: "64px 64px"
                     }}
-
                 />
 
             </div>
@@ -98,21 +90,16 @@ import { API_BASE_URL } from "../../constants/api";
                     <div>
 
                         <p className="mb-6 text-sm font-semibold uppercase tracking-[0.45em] text-cyan-400">
-
                             HELLO, I'M
-
                         </p>
 
                         <div className="flex flex-wrap items-center gap-4">
 
                             <h1 className="text-6xl font-black leading-none tracking-tight text-white lg:text-7xl xl:text-8xl">
-
                                 {profile?.name}
-
                             </h1>
 
                             {profile?.isPro && (
-
                                 <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-300">
 
                                     <BadgeCheck size={16} />
@@ -120,7 +107,6 @@ import { API_BASE_URL } from "../../constants/api";
                                     Verified Pro
 
                                 </span>
-
                             )}
 
                         </div>
@@ -141,20 +127,13 @@ import { API_BASE_URL } from "../../constants/api";
                                 xl:text-7xl
                             "
                         >
-
                             {profile?.title}
-
                         </h2>
 
                         <p className="mt-10 max-w-xl text-lg leading-9 text-slate-400">
 
-                            {
-
-                                profile?.headline ||
-
-                                "Building modern, scalable and user-friendly software solutions."
-
-                            }
+                            {profile?.headline ||
+                                "Building modern, scalable and user-friendly software solutions."}
 
                         </p>
 
@@ -174,54 +153,43 @@ import { API_BASE_URL } from "../../constants/api";
 
                         <div className="mt-14 flex flex-wrap gap-5">
 
-                            {
+                            {resumeUrl && (
 
-                                resumeUrl && (
+                                <a
+                                    href={resumeUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="
+                                        inline-flex
+                                        items-center
+                                        gap-3
+                                        rounded-full
+                                        bg-gradient-to-r
+                                        from-cyan-400
+                                        to-sky-500
+                                        px-8
+                                        py-4
+                                        font-semibold
+                                        text-slate-950
+                                        shadow-lg
+                                        shadow-cyan-500/20
+                                        transition-all
+                                        duration-300
+                                        hover:-translate-y-1
+                                        hover:shadow-cyan-500/40
+                                    "
+                                >
 
-                                    <a
+                                    <HiDownload className="text-xl" />
 
-                                        href={resumeUrl}
+                                    Download Resume
 
-                                        target="_blank"
+                                </a>
 
-                                        rel="noreferrer"
-
-                                        className="
-                                            inline-flex
-                                            items-center
-                                            gap-3
-                                            rounded-full
-                                            bg-gradient-to-r
-                                            from-cyan-400
-                                            to-sky-500
-                                            px-8
-                                            py-4
-                                            font-semibold
-                                            text-slate-950
-                                            shadow-lg
-                                            shadow-cyan-500/20
-                                            transition-all
-                                            duration-300
-                                            hover:-translate-y-1
-                                            hover:shadow-cyan-500/40
-                                        "
-
-                                    >
-
-                                        <HiDownload className="text-xl" />
-
-                                        Download Resume
-
-                                    </a>
-
-                                )
-
-                            }
+                            )}
 
                             <a
-
                                 href="#contact"
-
                                 className="
                                     inline-flex
                                     items-center
@@ -240,7 +208,6 @@ import { API_BASE_URL } from "../../constants/api";
                                     hover:border-cyan-400
                                     hover:text-cyan-400
                                 "
-
                             >
 
                                 <HiArrowRight />
@@ -255,84 +222,49 @@ import { API_BASE_URL } from "../../constants/api";
 
                         <div className="mt-12 flex gap-5">
 
-                            {
+                            {socialLinks?.github && (
 
-                                socialLinks?.github && (
+                                <a
+                                    href={socialLinks.github}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={socialButton}
+                                >
+                                    <FaGithub />
+                                </a>
 
-                                    <a
+                            )}
 
-                                        href={socialLinks.github}
+                            {socialLinks?.linkedin && (
 
-                                        target="_blank"
+                                <a
+                                    href={socialLinks.linkedin}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={socialButton}
+                                >
+                                    <FaLinkedin />
+                                </a>
 
-                                        rel="noreferrer"
+                            )}
 
-                                        className={socialButton}
+                            {socialLinks?.website && (
 
-                                    >
+                                <a
+                                    href={socialLinks.website}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={socialButton}
+                                >
+                                    <FaGlobe />
+                                </a>
 
-                                        <FaGithub />
-
-                                    </a>
-
-                                )
-
-                            }
-
-                            {
-
-                                socialLinks?.linkedin && (
-
-                                    <a
-
-                                        href={socialLinks.linkedin}
-
-                                        target="_blank"
-
-                                        rel="noreferrer"
-
-                                        className={socialButton}
-
-                                    >
-
-                                        <FaLinkedin />
-
-                                    </a>
-
-                                )
-
-                            }
-
-                            {
-
-                                socialLinks?.website && (
-
-                                    <a
-
-                                        href={socialLinks.website}
-
-                                        target="_blank"
-
-                                        rel="noreferrer"
-
-                                        className={socialButton}
-
-                                    >
-
-                                        <FaGlobe />
-
-                                    </a>
-
-                                )
-
-                            }
+                            )}
 
                         </div>
 
                     </div>
 
-                
-                    
                     {/* RIGHT SIDE */}
 
                     <div className="relative flex items-center justify-center">
@@ -347,67 +279,53 @@ import { API_BASE_URL } from "../../constants/api";
 
                         {/* Dynamic Skill Badges */}
 
-                        {
+                        {topSkills.map((skill, index) => {
 
-                            topSkills.map((skill, index) => {
+                            const positions = [
+                                "top-0 left-10",
+                                "top-16 right-0",
+                                "bottom-8 right-8",
+                                "bottom-0 left-8",
+                                "top-1/2 -left-8"
+                            ];
 
-                                const positions = [
+                            return (
 
-                                    "top-0 left-10",
+                                <div
+                                    key={skill._id}
+                                    className={`
+                                        absolute
+                                        ${positions[index]}
+                                        rounded-full
+                                        border
+                                        border-white/10
+                                        bg-white/5
+                                        backdrop-blur-xl
+                                        px-5
+                                        py-3
+                                        text-sm
+                                        font-medium
+                                        text-white
+                                        shadow-lg
+                                        shadow-cyan-500/10
+                                        transition-all
+                                        duration-300
+                                        hover:-translate-y-1
+                                        hover:border-cyan-400
+                                    `}
+                                >
 
-                                    "top-16 right-0",
+                                    {skill.name}
 
-                                    "bottom-8 right-8",
+                                </div>
 
-                                    "bottom-0 left-8",
+                            );
 
-                                    "top-1/2 -left-8"
-
-                                ];
-
-                                return (
-
-                                    <div
-
-                                        key={skill._id}
-
-                                        className={`
-                                            absolute
-                                            ${positions[index]}
-                                            rounded-full
-                                            border
-                                            border-white/10
-                                            bg-white/5
-                                            backdrop-blur-xl
-                                            px-5
-                                            py-3
-                                            text-sm
-                                            font-medium
-                                            text-white
-                                            shadow-lg
-                                            shadow-cyan-500/10
-                                            transition-all
-                                            duration-300
-                                            hover:-translate-y-1
-                                            hover:border-cyan-400
-                                        `}
-
-                                    >
-
-                                        {skill.name}
-
-                                    </div>
-
-                                );
-
-                            })
-
-                        }
+                        })}
 
                         {/* Profile Circle */}
 
                         <div
-
                             className="
                                 relative
                                 flex
@@ -423,11 +341,9 @@ import { API_BASE_URL } from "../../constants/api";
                                 p-[8px]
                                 shadow-[0_0_100px_rgba(34,211,238,0.20)]
                             "
-
                         >
 
                             <div
-
                                 className="
                                     flex
                                     h-full
@@ -441,15 +357,11 @@ import { API_BASE_URL } from "../../constants/api";
                                     bg-[#0F172A]
                                     backdrop-blur-xl
                                 "
-
                             >
 
                                 <img
-
                                     src={imageUrl}
-
                                     alt={profile?.name}
-
                                     className="
                                         h-full
                                         w-full
@@ -459,7 +371,6 @@ import { API_BASE_URL } from "../../constants/api";
                                         duration-500
                                         hover:scale-105
                                     "
-
                                 />
 
                             </div>
@@ -473,9 +384,7 @@ import { API_BASE_URL } from "../../constants/api";
             </div>
 
         </section>
-
     );
-
 }
 
 export default Hero;
