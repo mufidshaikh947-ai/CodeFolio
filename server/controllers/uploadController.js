@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const { toPublicUploadPath } = require("../config/paths");
 
 // Upload Profile Image
 const uploadProfileImage = async (req, res) => {
@@ -10,7 +11,7 @@ const uploadProfileImage = async (req, res) => {
             req.user.id,
 
             {
-               profileImage: req.file.path.replace(/\\/g, "/")
+               profileImage: toPublicUploadPath(req.file.path)
             },
 
             {
@@ -51,7 +52,7 @@ const uploadResume = async (req, res) => {
             req.user.id,
 
             {
-                resume: req.file.path.replace(/\\/g, "/")
+                resume: toPublicUploadPath(req.file.path)
             },
 
             {

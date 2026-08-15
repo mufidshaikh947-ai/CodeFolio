@@ -1,5 +1,6 @@
 const validator = require("validator");
 const Project = require("../models/Project");
+const { toPublicUploadPath } = require("../config/paths");
 
 // Create Project
 const createProject = async (req, res) => {
@@ -61,7 +62,7 @@ const createProject = async (req, res) => {
             liveLink,
 
             image: req.file
-                ? req.file.path.replace(/\\/g, "/")
+                ? toPublicUploadPath(req.file.path)
                 : "",
 
             category,
@@ -223,7 +224,7 @@ const updateProject = async (req, res) => {
 
         if (req.file) {
 
-            updates.image = req.file.path.replace(/\\/g, "/");
+            updates.image = toPublicUploadPath(req.file.path);
 
         }
 

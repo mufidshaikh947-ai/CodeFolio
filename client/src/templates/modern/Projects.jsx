@@ -25,6 +25,8 @@ function Projects({ projects }) {
 
                         {projects.map((project) => {
                             console.log("Project Object:", project);
+                            console.log("PROJECT IMAGE FIELD:", project.image);
+console.log("PROJECT IMAGE TYPE:", typeof project.image);
 
                             const imageUrl = project.image
                                 ? `${API_BASE_URL}/${project.image}`

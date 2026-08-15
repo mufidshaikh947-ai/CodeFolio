@@ -1,20 +1,21 @@
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const { UPLOADS_DIR } = require("./paths");
 
 // ============================================
 // Ensure Upload Directories Exist
 // ============================================
 
 const uploadDirectories = {
-    profileImage: "uploads/profiles",
-    resume: "uploads/resumes",
-    projectImage: "uploads/projects",
-    certificateImage: "uploads/certificates"
+    profileImage: path.join(UPLOADS_DIR, "profiles"),
+    resume: path.join(UPLOADS_DIR, "resumes"),
+    projectImage: path.join(UPLOADS_DIR, "projects"),
+    certificateImage: path.join(UPLOADS_DIR, "certificates")
 };
 
 Object.values(uploadDirectories).forEach((dir) => {
-    fs.mkdirSync(path.resolve(dir), { recursive: true });
+    fs.mkdirSync(dir, { recursive: true });
 });
 
 // ============================================

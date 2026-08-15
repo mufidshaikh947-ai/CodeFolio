@@ -2,13 +2,23 @@ require("dotenv").config();
 
 const express = require("express");
 const connectDB = require("./config/db");
-const path = require("path");
 const cors = require("cors");
+const { UPLOADS_DIR } = require("./config/paths");
 const app = express();
 app.disable("x-powered-by");
 
 // Middleware
-const allowedOrigins = process.env.CLIENT_URL.split(",");
+// Reads BOTH CLIENT_URL (local dev) and CLIENT_URL_PRODUCTION (deployed
+// Vercel URL) so the deployed frontend isn't blocked by CORS. Each var
+// can also be a comma-separated list. Missing/empty vars are ignored
+// instead of crashing the server on startup.
+const allowedOrigins = [
+    process.env.CLIENT_URL,
+    process.env.CLIENT_URL_PRODUCTION
+]
+    .filter(Boolean)
+    .flatMap((url) => url.split(","))
+    .map((url) => url.trim());
 
 app.use(
     cors({
@@ -36,9 +46,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
     "/uploads",
-    express.static(
-        path.join(__dirname, "uploads")
-    )
+    express.static(UPLOADS_DIR)
 );
 
 const PORT = process.env.PORT;
@@ -81,4 +89,3 @@ app.get("/health", (req, res) => {
 const routes = require("./routes");
 
 app.use("/", routes);
-
