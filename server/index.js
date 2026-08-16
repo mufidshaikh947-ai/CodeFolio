@@ -3,7 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
 const cors = require("cors");
-const { UPLOADS_DIR } = require("./config/paths");
 const app = express();
 app.disable("x-powered-by");
 
@@ -44,10 +43,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-    "/uploads",
-    express.static(UPLOADS_DIR)
-);
+
 
 const PORT = process.env.PORT;
 

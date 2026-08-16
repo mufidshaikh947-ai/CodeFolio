@@ -1,140 +1,60 @@
 const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const path = require("path");
-const fs = require("fs");
-const { UPLOADS_DIR } = require("./paths");
 
-// ============================================
-// Ensure Upload Directories Exist
-// ============================================
-
-const uploadDirectories = {
-    profileImage: path.join(UPLOADS_DIR, "profiles"),
-    resume: path.join(UPLOADS_DIR, "resumes"),
-    projectImage: path.join(UPLOADS_DIR, "projects"),
-    certificateImage: path.join(UPLOADS_DIR, "certificates")
-};
-
-Object.values(uploadDirectories).forEach((dir) => {
-    fs.mkdirSync(dir, { recursive: true });
+// Configure Cloudinary with your credentials
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// ============================================
-// Multer Storage
-// ============================================
+// Setup Cloudinary Storage
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: async (req, file) => {
+        let folderName = "codefolio/misc";
+        
+        // Dynamically assign folders in your Cloudinary account
+        if (file.fieldname === "profileImage") folderName = "codefolio/profiles";
+        else if (file.fieldname === "resume") folderName = "codefolio/resumes";
+        else if (file.fieldname === "projectImage") folderName = "codefolio/projects";
+        else if (file.fieldname === "certificateImage") folderName = "codefolio/certificates";
 
-const storage = multer.diskStorage({
-
-    destination: function (req, file, cb) {
-
-        if (uploadDirectories[file.fieldname]) {
-
-            cb(null, uploadDirectories[file.fieldname]);
-
-        } else {
-
-            cb(new Error("Invalid upload field."), null);
-
-        }
-
+        return {
+            folder: folderName,
+            // 'auto' allows Cloudinary to handle both images and raw files (like PDFs)
+            resource_type: "auto", 
+            // Keep the original file extension if possible
+            format: path.extname(file.originalname).substring(1) || undefined, 
+        };
     },
-
-    filename: function (req, file, cb) {
-
-        const uniqueName =
-            Date.now() + "-" + Math.round(Math.random() * 1000000);
-
-        cb(
-            null,
-            uniqueName + path.extname(file.originalname)
-        );
-
-    }
-
 });
 
-// ============================================
-// File Filter
-// ============================================
-
+// File Filter for basic validation before sending to Cloudinary
 const fileFilter = (req, file, cb) => {
+    const isImage = ["profileImage", "projectImage", "certificateImage"].includes(file.fieldname);
+    const isPdf = file.fieldname === "resume";
+    
+    const ext = path.extname(file.originalname).toLowerCase();
 
-    if (
-        file.fieldname === "profileImage" ||
-        file.fieldname === "projectImage" ||
-        file.fieldname === "certificateImage"
-    ) {
-
-        const allowedTypes = [
-            ".jpg",
-            ".jpeg",
-            ".png",
-            ".webp"
-        ];
-
-        const extension = path
-            .extname(file.originalname)
-            .toLowerCase();
-
-        if (allowedTypes.includes(extension)) {
-
-            cb(null, true);
-
-        } else {
-
-            cb(
-                new Error(
-                    "Only JPG, JPEG, PNG and WEBP images are allowed."
-                )
-            );
-
-        }
-
+    if (isImage && [".jpg", ".jpeg", ".png", ".webp"].includes(ext)) {
+        cb(null, true);
+    } else if (isPdf && ext === ".pdf") {
+        cb(null, true);
+    } else {
+        cb(new Error("Invalid file type."), false);
     }
-
-    else if (file.fieldname === "resume") {
-
-        const extension = path
-            .extname(file.originalname)
-            .toLowerCase();
-
-        if (extension === ".pdf") {
-
-            cb(null, true);
-
-        } else {
-
-            cb(
-                new Error("Only PDF files are allowed.")
-            );
-
-        }
-
-    }
-
-    else {
-
-        cb(new Error("Invalid upload field."));
-
-    }
-
 };
 
-// ============================================
 // Upload Middleware
-// ============================================
-
 const upload = multer({
-
-    storage,
-
-    fileFilter,
-
+    storage: storage,
+    fileFilter: fileFilter,
     limits: {
-
-        fileSize: 5 * 1024 * 1024
-
+        fileSize: 5 * 1024 * 1024 // 5MB limit
     }
-
 });
 
 module.exports = upload;

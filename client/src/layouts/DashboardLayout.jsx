@@ -9,7 +9,19 @@ import { usePreview } from "../context/PreviewContext";
 
 function DashboardLayout() {
 
-    const [sidebarOpen, setSidebarOpen] = useState(true);
+    // Sidebar starts open on desktop (lg breakpoint, 1024px+) and
+    // closed on mobile, so it doesn't cover the whole screen on load.
+    const [sidebarOpen, setSidebarOpen] = useState(() => {
+
+        if (typeof window !== "undefined") {
+
+            return window.innerWidth >= 1024;
+
+        }
+
+        return true;
+
+    });
 
     const [previewKey, setPreviewKey] = useState(Date.now());
 
@@ -50,15 +62,15 @@ function DashboardLayout() {
                 setSidebarOpen={setSidebarOpen}
             />
 
-            <div className="flex flex-1 overflow-hidden">
+            <div className="flex flex-1 flex-col overflow-hidden lg:flex-row">
 
                 {/* Dashboard */}
 
                 <div
                     className={
                         enabled
-                            ? "w-1/2 border-r border-slate-300"
-                            : "w-full"
+                            ? "h-1/2 border-b border-slate-300 lg:h-full lg:w-1/2 lg:border-b-0 lg:border-r"
+                            : "h-full w-full"
                     }
                 >
 
@@ -83,7 +95,7 @@ function DashboardLayout() {
 
                 {enabled && user?.username && (
 
-                    <div className="w-1/2 bg-white">
+                    <div className="h-1/2 bg-white lg:h-full lg:w-1/2">
 
                         <iframe
                             key={previewKey}

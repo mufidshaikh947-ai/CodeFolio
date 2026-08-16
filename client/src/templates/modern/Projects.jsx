@@ -1,9 +1,6 @@
 import { API_BASE_URL } from "../../constants/api";
 
 function Projects({ projects }) {
-    console.log("========== PROJECTS ==========");
-    console.log("API_BASE_URL:", API_BASE_URL);
-    console.log("Projects:", projects);
 
     return (
         <section className="py-16 lg:py-20">
@@ -24,18 +21,9 @@ function Projects({ projects }) {
                     <div className="space-y-14">
 
                         {projects.map((project) => {
-                            console.log("Project Object:", project);
-                            console.log("PROJECT IMAGE FIELD:", project.image);
-console.log("PROJECT IMAGE TYPE:", typeof project.image);
-
                             const imageUrl = project.image
                                 ? `${API_BASE_URL}/${project.image}`
                                 : "https://placehold.co/700x500?text=Project";
-
-                            console.log(
-                                "Project Image URL:",
-                                imageUrl
-                            );
 
                             const technologies = Array.isArray(
                                 project.technologies
@@ -77,18 +65,6 @@ console.log("PROJECT IMAGE TYPE:", typeof project.image);
                                                     duration-500
                                                     hover:scale-[1.03]
                                                 "
-                                                onLoad={() => {
-                                                    console.log(
-                                                        "IMAGE LOADED:",
-                                                        imageUrl
-                                                    );
-                                                }}
-                                                onError={(event) => {
-                                                    console.error(
-                                                        "IMAGE FAILED:",
-                                                        imageUrl
-                                                    );
-                                                }}
                                             />
 
                                         </div>
@@ -159,7 +135,7 @@ console.log("PROJECT IMAGE TYPE:", typeof project.image);
                                             <div className="mt-12 flex flex-wrap gap-5">
 
                                                 {project.githubLink && (
-                                                    <a
+                                                    
                                                         href={project.githubLink}
                                                         target="_blank"
                                                         rel="noreferrer"
@@ -180,7 +156,7 @@ console.log("PROJECT IMAGE TYPE:", typeof project.image);
                                                 )}
 
                                                 {project.liveLink && (
-                                                    <a
+                                                    
                                                         href={project.liveLink}
                                                         target="_blank"
                                                         rel="noreferrer"

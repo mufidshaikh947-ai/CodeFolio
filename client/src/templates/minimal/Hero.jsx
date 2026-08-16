@@ -1,5 +1,5 @@
 import { BadgeCheck } from "lucide-react";
-   import { API_BASE_URL } from "../../constants/api";
+import { API_BASE_URL } from "../../constants/api";
 
 function Hero({ profile, assets, socialLinks }) {
 
@@ -27,7 +27,7 @@ function Hero({ profile, assets, socialLinks }) {
                         <img
                             src={imageUrl}
                             alt={profile.name}
-                            className="h-[430px] w-[430px] rounded-full object-cover shadow-lg"
+                            className="h-56 w-56 rounded-full object-cover shadow-lg sm:h-72 sm:w-72 lg:h-[430px] lg:w-[430px]"
                         />
 
                     </div>
@@ -44,7 +44,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                         <div className="flex flex-wrap items-center gap-3">
 
-                            <h1 className="text-7xl font-bold tracking-tight text-slate-900">
+                            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-7xl">
 
                                 {profile.name}
 
@@ -98,7 +98,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                             {resumeUrl && (
 
-                                <a
+                                
 
                                     href={resumeUrl}
 
@@ -116,7 +116,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                             )}
 
-                            <a
+                            
 
                                 href="#contact"
 
@@ -136,7 +136,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                                 socialLinks?.github && (
 
-                                    <a
+                                    
 
                                         href={socialLinks.github}
 
@@ -160,7 +160,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                                 socialLinks?.linkedin && (
 
-                                    <a
+                                    
 
                                         href={socialLinks.linkedin}
 
@@ -184,7 +184,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                                 socialLinks?.website && (
 
-                                    <a
+                                    
 
                                         href={socialLinks.website}
 

@@ -155,7 +155,7 @@ function Hero({
 
                             {resumeUrl && (
 
-                                <a
+                                
                                     href={resumeUrl}
                                     target="_blank"
                                     rel="noreferrer"
@@ -188,7 +188,7 @@ function Hero({
 
                             )}
 
-                            <a
+                            
                                 href="#contact"
                                 className="
                                     inline-flex
@@ -224,7 +224,7 @@ function Hero({
 
                             {socialLinks?.github && (
 
-                                <a
+                                
                                     href={socialLinks.github}
                                     target="_blank"
                                     rel="noreferrer"
@@ -237,7 +237,7 @@ function Hero({
 
                             {socialLinks?.linkedin && (
 
-                                <a
+                                
                                     href={socialLinks.linkedin}
                                     target="_blank"
                                     rel="noreferrer"
@@ -250,7 +250,7 @@ function Hero({
 
                             {socialLinks?.website && (
 
-                                <a
+                                
                                     href={socialLinks.website}
                                     target="_blank"
                                     rel="noreferrer"
@@ -271,11 +271,11 @@ function Hero({
 
                         {/* Main Glow */}
 
-                        <div className="absolute h-[620px] w-[620px] rounded-full bg-cyan-500/10 blur-[140px]" />
+                        <div className="absolute hidden h-[620px] w-[620px] rounded-full bg-cyan-500/10 blur-[140px] lg:block" />
 
-                        <div className="absolute h-[520px] w-[520px] rounded-full border border-cyan-400/20" />
+                        <div className="absolute hidden h-[520px] w-[520px] rounded-full border border-cyan-400/20 lg:block" />
 
-                        <div className="absolute h-[570px] w-[570px] rounded-full border border-violet-500/10" />
+                        <div className="absolute hidden h-[570px] w-[570px] rounded-full border border-violet-500/10 lg:block" />
 
                         {/* Dynamic Skill Badges */}
 
@@ -295,6 +295,8 @@ function Hero({
                                     key={skill._id}
                                     className={`
                                         absolute
+                                        hidden
+                                        lg:block
                                         ${positions[index]}
                                         rounded-full
                                         border
@@ -329,8 +331,8 @@ function Hero({
                             className="
                                 relative
                                 flex
-                                h-[470px]
-                                w-[470px]
+                                h-56
+                                w-56
                                 items-center
                                 justify-center
                                 rounded-full
@@ -340,6 +342,10 @@ function Hero({
                                 to-violet-600
                                 p-[8px]
                                 shadow-[0_0_100px_rgba(34,211,238,0.20)]
+                                sm:h-72
+                                sm:w-72
+                                lg:h-[470px]
+                                lg:w-[470px]
                             "
                         >
 
