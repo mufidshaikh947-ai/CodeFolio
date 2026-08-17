@@ -122,23 +122,32 @@ function Navbar({
 
             {/* Right */}
 
-            <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+            <div className="flex min-w-0 items-center gap-1 sm:gap-3">
 
                 <button
                     type="button"
                     onClick={handlePreviewToggle}
+                    aria-label="Live Preview"
+                    title="Live Preview"
                     className={`
                         inline-flex
+                        h-10
+                        w-10
+                        shrink-0
                         items-center
+                        justify-center
                         gap-2
                         rounded-xl
                         border
-                        px-4
-                        py-2
+                        p-0
                         text-sm
                         font-medium
                         transition-all
                         duration-200
+                        sm:h-auto
+                        sm:w-auto
+                        sm:px-4
+                        sm:py-2
                         ${
                             enabled
                                 ? "border-blue-600 bg-blue-600 text-white shadow-md"
@@ -147,7 +156,7 @@ function Navbar({
                     `}
                 >
 
-                    <Monitor size={16} />
+                    <Monitor size={18} aria-hidden="true" />
 
                     <span className="hidden sm:inline">
 
@@ -165,28 +174,37 @@ function Navbar({
                         href={`/${user.username}`}
                         target="_blank"
                         rel="noreferrer"
+                        aria-label="View Portfolio"
+                        title="View Portfolio"
                         className="
                             inline-flex
+                            h-10
+                            w-10
+                            shrink-0
                             items-center
+                            justify-center
                             gap-2
                             rounded-xl
                             border
                             border-slate-200
                             bg-white
-                            px-4
-                            py-2
+                            p-0
                             text-sm
                             font-medium
                             text-slate-700
                             transition-all
                             duration-200
+                            sm:h-auto
+                            sm:w-auto
+                            sm:px-4
+                            sm:py-2
                             hover:border-blue-200
                             hover:bg-slate-50
                             hover:text-blue-600
                         "
                     >
 
-                        <ExternalLink size={16} />
+                        <ExternalLink size={18} aria-hidden="true" />
 
                         <span className="hidden sm:inline">
 
