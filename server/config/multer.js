@@ -1,18 +1,10 @@
 const multer = require("multer");
-const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const path = require("path");
+const { cloudinary } = require("./cloudinary");
 
-// Configure Cloudinary with your credentials
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
-// Setup Cloudinary Storage
 const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
+    cloudinary,
     params: async (req, file) => {
         let folderName = "codefolio/misc";
         
@@ -22,12 +14,12 @@ const storage = new CloudinaryStorage({
         else if (file.fieldname === "projectImage") folderName = "codefolio/projects";
         else if (file.fieldname === "certificateImage") folderName = "codefolio/certificates";
 
+        const isResume = file.fieldname === "resume";
+
         return {
             folder: folderName,
-            // 'auto' allows Cloudinary to handle both images and raw files (like PDFs)
-            resource_type: "auto", 
-            // Keep the original file extension if possible
-            format: path.extname(file.originalname).substring(1) || undefined, 
+            resource_type: isResume ? "raw" : "image",
+            format: path.extname(file.originalname).substring(1) || undefined
         };
     },
 });

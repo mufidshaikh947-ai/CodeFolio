@@ -56,7 +56,8 @@ function Navbar({
                 border-b
                 border-slate-200/80
                 bg-white/90
-                px-6
+                gap-2
+                px-3
                 backdrop-blur-md
                 lg:px-8
             "
@@ -121,7 +122,7 @@ function Navbar({
 
             {/* Right */}
 
-            <div className="flex items-center gap-3">
+            <div className="flex min-w-0 items-center gap-2 sm:gap-3">
 
                 <button
                     type="button"

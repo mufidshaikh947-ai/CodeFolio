@@ -1,6 +1,6 @@
 const validator = require("validator");
 const Project = require("../models/Project");
-const { toPublicUploadPath } = require("../config/paths");
+const { getUploadedAsset, deleteCloudinaryAsset } = require("../config/cloudinary");
 
 // Create Project
 const createProject = async (req, res) => {
@@ -47,6 +47,8 @@ const createProject = async (req, res) => {
 
         }
 
+        const asset = getUploadedAsset(req.file);
+
         const project = await Project.create({
 
             user: req.user.id,
@@ -61,9 +63,8 @@ const createProject = async (req, res) => {
 
             liveLink,
 
-            image: req.file
-                ? toPublicUploadPath(req.file.path)
-                : "",
+            image: asset?.url || "",
+            imagePublicId: asset?.publicId || "",
 
             category,
 
@@ -95,6 +96,9 @@ const createProject = async (req, res) => {
     }
 
     catch (error) {
+
+        const asset = getUploadedAsset(req.file);
+        if (asset?.publicId) await deleteCloudinaryAsset(asset.publicId, asset.resourceType);
 
         console.error(error);
 
@@ -157,6 +161,7 @@ const updateProject = async (req, res) => {
     try {
 
         const updates = {};
+        const asset = getUploadedAsset(req.file);
 
         const allowedFields = [
 
@@ -222,20 +227,24 @@ const updateProject = async (req, res) => {
 
         }
 
-        if (req.file) {
+        if (asset) {
+            updates.image = asset.url;
+            updates.imagePublicId = asset.publicId;
+        }
 
-            updates.image = toPublicUploadPath(req.file.path);
+        const existingProject = await Project.findOne({
+            _id: req.params.id,
+            user: req.user.id
+        });
 
+        if (!existingProject) {
+            if (asset?.publicId) await deleteCloudinaryAsset(asset.publicId, asset.resourceType);
+            return res.status(404).json({ success: false, message: "Project not found." });
         }
 
         const project = await Project.findOneAndUpdate(
 
-            {
-
-                _id: req.params.id,
-                user: req.user.id
-
-            },
+            { _id: req.params.id, user: req.user.id },
 
             updates,
 
@@ -248,15 +257,8 @@ const updateProject = async (req, res) => {
 
         );
 
-        if (!project) {
-
-            return res.status(404).json({
-
-                success: false,
-                message: "Project not found."
-
-            });
-
+        if (asset?.publicId) {
+            await deleteCloudinaryAsset(existingProject.imagePublicId, "image");
         }
 
         res.status(200).json({
@@ -270,6 +272,9 @@ const updateProject = async (req, res) => {
     }
 
     catch (error) {
+
+        const asset = getUploadedAsset(req.file);
+        if (asset?.publicId) await deleteCloudinaryAsset(asset.publicId, asset.resourceType);
 
         console.error(error);
 
@@ -306,6 +311,8 @@ const deleteProject = async (req, res) => {
             });
 
         }
+
+        await deleteCloudinaryAsset(project.imagePublicId, "image");
 
         res.status(200).json({
 

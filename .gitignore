@@ -10,11 +10,11 @@ node_modules/
 dist/
 build/
 
+# Legacy local uploads (Cloudinary is used for new persistent uploads)
+server/uploads/
+
 # Logs
 *.log
-
-# Uploads
-server/uploads/
 
 # IDE files
 .vscode/

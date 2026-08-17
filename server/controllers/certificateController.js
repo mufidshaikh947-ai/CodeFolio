@@ -1,11 +1,12 @@
 const Certificate = require("../models/Certificate");
-const { toPublicUploadPath } = require("../config/paths");
+const { getUploadedAsset, deleteCloudinaryAsset } = require("../config/cloudinary");
 
 // Create
 const createCertificate = async (req, res) => {
 
     try {
 
+        const asset = getUploadedAsset(req.file);
         const certificate = await Certificate.create({
 
             user: req.user.id,
@@ -19,9 +20,8 @@ const createCertificate = async (req, res) => {
             credentialId: req.body.credentialId,
 
             credentialUrl: req.body.credentialUrl,
-certificateImage: req.file
-    ? toPublicUploadPath(req.file.path)
-    : "",
+            certificateImage: asset?.url || "",
+            certificateImagePublicId: asset?.publicId || "",
 skills: req.body.skills
     ? req.body.skills
           .split(",")
@@ -44,6 +44,9 @@ displayOrder: req.body.displayOrder || 0,
         });
 
     } catch (error) {
+
+    const asset = getUploadedAsset(req.file);
+    if (asset?.publicId) await deleteCloudinaryAsset(asset.publicId, asset.resourceType);
 
     console.error("===== CERTIFICATE ERROR =====");
     console.error(error);
@@ -99,6 +102,7 @@ const updateCertificate = async (req, res) => {
     try {
 
         const updates = {};
+        const asset = getUploadedAsset(req.file);
 
         const allowedFields = [
 
@@ -112,15 +116,18 @@ const updateCertificate = async (req, res) => {
 
 "credentialUrl",
 
-"certificateImage",
-
 "description",
 
 "skills",
 
 "displayOrder"
 
-];
+        ];
+
+        if (asset) {
+            updates.certificateImage = asset.url;
+            updates.certificateImagePublicId = asset.publicId;
+        }
 
         allowedFields.forEach(field => {
 
@@ -139,6 +146,16 @@ const updateCertificate = async (req, res) => {
                 .map(item => item.trim())
                 .filter(item => item.length > 0);
 
+        }
+
+        const existingCertificate = await Certificate.findOne({
+            _id: req.params.id,
+            user: req.user.id
+        });
+
+        if (!existingCertificate) {
+            if (asset?.publicId) await deleteCloudinaryAsset(asset.publicId, asset.resourceType);
+            return res.status(404).json({ success: false, message: "Certificate not found." });
         }
 
         const certificate = await Certificate.findOneAndUpdate(
@@ -168,6 +185,10 @@ const updateCertificate = async (req, res) => {
 
         }
 
+        if (asset?.publicId) {
+            await deleteCloudinaryAsset(existingCertificate.certificateImagePublicId, "image");
+        }
+
         res.status(200).json({
 
             success: true,
@@ -177,6 +198,9 @@ const updateCertificate = async (req, res) => {
         });
 
     } catch (error) {
+
+        const asset = getUploadedAsset(req.file);
+        if (asset?.publicId) await deleteCloudinaryAsset(asset.publicId, asset.resourceType);
 
         res.status(500).json({
 
@@ -210,6 +234,8 @@ const deleteCertificate = async (req, res) => {
             });
 
         }
+
+        await deleteCloudinaryAsset(certificate.certificateImagePublicId, "image");
 
         res.status(200).json({
 

@@ -1,10 +1,10 @@
-import { API_BASE_URL } from "../../constants/api";
+import { getAssetUrl } from "../../utils/assetUrl";
 
 function Projects({ projects }) {
 
     return (
         <section className="py-16 lg:py-20">
-            <div className="mx-auto max-w-7xl px-8">
+            <div className="mx-auto max-w-7xl px-4 sm:px-8">
 
                 {/* Header */}
                 <div className="mb-20 text-center">
@@ -12,7 +12,7 @@ function Projects({ projects }) {
                         PORTFOLIO
                     </p>
 
-                    <h2 className="mt-4 text-5xl font-black text-white">
+                        <h2 className="mt-4 text-3xl font-black text-white sm:text-5xl">
                         Featured Projects
                     </h2>
                 </div>
@@ -22,7 +22,7 @@ function Projects({ projects }) {
 
                         {projects.map((project) => {
                             const imageUrl = project.image
-                                ? `${API_BASE_URL}/${project.image}`
+                                ? getAssetUrl(project.image)
                                 : "https://placehold.co/700x500?text=Project";
 
                             const technologies = Array.isArray(
@@ -51,7 +51,7 @@ function Projects({ projects }) {
                                     <div className="grid lg:grid-cols-[430px_1fr]">
 
                                         {/* Project Image */}
-                                        <div className="p-8">
+                                        <div className="p-4 sm:p-8">
 
                                             <img
                                                 src={imageUrl}
@@ -70,13 +70,13 @@ function Projects({ projects }) {
                                         </div>
 
                                         {/* Project Details */}
-                                        <div className="flex flex-col justify-between p-10">
+                                        <div className="flex min-w-0 flex-col justify-between p-5 sm:p-10">
 
                                             <div>
 
                                                 <div className="flex items-center gap-4">
 
-                                                    <h3 className="text-4xl font-bold text-white">
+                                                    <h3 className="break-words text-2xl font-bold text-white sm:text-4xl">
                                                         {project.title}
                                                     </h3>
 
@@ -98,7 +98,7 @@ function Projects({ projects }) {
 
                                                 </div>
 
-                                                <p className="mt-8 text-lg leading-9 text-slate-300">
+                                                <p className="mt-6 text-base leading-8 text-slate-300 sm:mt-8 sm:text-lg sm:leading-9">
                                                     {project.description}
                                                 </p>
 
@@ -136,7 +136,7 @@ function Projects({ projects }) {
 
                                                 {project.githubLink && (
                                                     
-                                                        href={project.githubLink}
+                        <a href={project.githubLink}
                                                         target="_blank"
                                                         rel="noreferrer"
                                                         className="
@@ -157,7 +157,7 @@ function Projects({ projects }) {
 
                                                 {project.liveLink && (
                                                     
-                                                        href={project.liveLink}
+                        <a href={project.liveLink}
                                                         target="_blank"
                                                         rel="noreferrer"
                                                         className="

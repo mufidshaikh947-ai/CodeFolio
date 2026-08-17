@@ -85,3 +85,24 @@ app.get("/health", (req, res) => {
 const routes = require("./routes");
 
 app.use("/", routes);
+
+app.use((error, req, res, next) => {
+    if (res.headersSent) return next(error);
+
+    if (error?.code === "LIMIT_FILE_SIZE") {
+        return res.status(400).json({
+            success: false,
+            message: "File size must be 5MB or less."
+        });
+    }
+
+    if (error?.message === "Invalid file type.") {
+        return res.status(400).json({ success: false, message: error.message });
+    }
+
+    console.error("Request failed:", error.message);
+    return res.status(500).json({
+        success: false,
+        message: "Upload or request failed."
+    });
+});

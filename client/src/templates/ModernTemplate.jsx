@@ -51,7 +51,7 @@ function ModernTemplate({ portfolio }) {
 
                 {/* Portfolio Content */}
 
-                <div className="relative mx-auto w-full max-w-[1400px] px-6 md:px-10 xl:px-12">
+                <div className="relative mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-10 xl:px-12">
 
                     <section className="py-24">
 
@@ -116,7 +116,7 @@ function ModernTemplate({ portfolio }) {
 
             <footer className="border-t border-white/10 bg-white/[0.015] backdrop-blur-sm">
 
-                <div className="mx-auto flex w-full max-w-[1400px] flex-col items-center justify-between gap-8 px-6 py-14 md:flex-row md:px-10 xl:px-12">
+                <div className="mx-auto flex w-full max-w-[1400px] flex-col items-center justify-between gap-8 px-4 py-14 sm:px-6 md:flex-row md:px-10 xl:px-12">
 
                     <div>
 

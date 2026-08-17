@@ -39,6 +39,11 @@ const certificateSchema = new mongoose.Schema(
     default: ""
 },
 
+        certificateImagePublicId: {
+    type: String,
+    default: ""
+},
+
         description: {
             type: String,
             default: ""

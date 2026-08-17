@@ -19,14 +19,13 @@ import LoadingState from "../components/ui/LoadingState";
 import EmptyState from "../components/ui/EmptyState";
 import StatusBadge from "../components/ui/StatusBadge";
 import { notifyPortfolioUpdate } from "../utils/livePreview";
+import { getAssetUrl } from "../utils/assetUrl";
 
 import {
     getProjects,
     createProject,
     deleteProject
 } from "../services/projectService";
-const API_URL = import.meta.env.VITE_API_URL;
-
 function ProjectsPage() {
 
     const [projects, setProjects] = useState([]);
@@ -525,7 +524,7 @@ return (
 
                                                 <img
 
-                                                    src={`${API_URL}/${project.image}`}
+                                                    src={getAssetUrl(project.image)}
                                                     alt={project.title}
 
                                                     className="h-full w-full object-cover"

@@ -23,7 +23,7 @@ function DashboardLayout() {
 
     });
 
-    const [previewKey, setPreviewKey] = useState(Date.now());
+    const [previewKey, setPreviewKey] = useState(() => Date.now());
 
     const { enabled } = usePreview();
 
@@ -81,7 +81,7 @@ function DashboardLayout() {
                             setSidebarOpen={setSidebarOpen}
                         />
 
-                        <main className="flex-1 overflow-y-auto p-6 sm:p-8 lg:p-10">
+                        <main className="min-w-0 flex-1 overflow-y-auto p-3 sm:p-6 lg:p-10">
 
                             <Outlet />
 

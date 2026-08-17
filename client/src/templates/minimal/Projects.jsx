@@ -1,10 +1,11 @@
+import { getAssetUrl } from "../../utils/assetUrl";
+
 function Projects({ projects }) {
-const API_URL = import.meta.env.VITE_API_URL;
 
     return (
 
 <section className="py-24">
-            <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 
                 <div className="mb-16 text-center">
 
@@ -14,7 +15,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
                     </p>
 
-                    <h2 className="mt-3 text-6xl font-bold tracking-tight text-slate-900">
+                    <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
 
                         Projects
 
@@ -40,13 +41,13 @@ const API_URL = import.meta.env.VITE_API_URL;
 
                                     {/* Project Image */}
 
-                                    <div className="bg-slate-50 p-8">
+                                        <div className="bg-slate-50 p-4 sm:p-8">
 
                                         <img
 
                                             src={
     project.image
-        ? `${API_URL}/${project.image}`
+        ? getAssetUrl(project.image)
         : "https://placehold.co/700x500?text=Project"
 }
 
@@ -60,13 +61,13 @@ const API_URL = import.meta.env.VITE_API_URL;
 
                                     {/* Project Details */}
 
-                                    <div className="flex flex-col justify-between p-10">
+                                    <div className="flex min-w-0 flex-col justify-between p-5 sm:p-10">
 
                                         <div>
 
                                             <div className="flex items-center gap-3">
 
-                                                <h3 className="text-4xl font-bold text-slate-900">
+                                                <h3 className="break-words text-2xl font-bold text-slate-900 sm:text-4xl">
 
                                                     {project.title}
 

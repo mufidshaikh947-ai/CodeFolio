@@ -11,7 +11,7 @@ import {
 
 import { BadgeCheck } from "lucide-react";
 
-import { API_BASE_URL } from "../../constants/api";
+import { getAssetUrl } from "../../utils/assetUrl";
 
 function Hero({
     profile,
@@ -21,11 +21,11 @@ function Hero({
 }) {
 
     const imageUrl = assets?.profileImage
-        ? `${API_BASE_URL}/${assets.profileImage}`
+        ? getAssetUrl(assets.profileImage)
         : "https://placehold.co/800x800?text=Profile";
 
     const resumeUrl = assets?.resume
-        ? `${API_BASE_URL}/${assets.resume}`
+        ? getAssetUrl(assets.resume)
         : null;
 
     const topSkills = skills
@@ -81,9 +81,9 @@ function Hero({
 
             <div className="absolute bottom-0 right-0 h-[650px] w-[650px] rounded-full bg-violet-600/10 blur-[180px]" />
 
-            <div className="relative mx-auto flex min-h-[100vh] max-w-7xl items-center px-8 py-24">
+            <div className="relative mx-auto flex min-h-[100vh] max-w-7xl items-center px-4 py-16 sm:px-8 sm:py-24">
 
-                <div className="grid w-full items-center gap-24 lg:grid-cols-2">
+                <div className="grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-24">
 
                     {/* LEFT SIDE */}
 
@@ -95,7 +95,7 @@ function Hero({
 
                         <div className="flex flex-wrap items-center gap-4">
 
-                            <h1 className="text-6xl font-black leading-none tracking-tight text-white lg:text-7xl xl:text-8xl">
+                            <h1 className="text-4xl font-black leading-none tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl">
                                 {profile?.name}
                             </h1>
 
@@ -155,8 +155,8 @@ function Hero({
 
                             {resumeUrl && (
 
-                                
-                                    href={resumeUrl}
+
+                                <a href={resumeUrl}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="
@@ -189,7 +189,7 @@ function Hero({
                             )}
 
                             
-                                href="#contact"
+                            <a href="#contact"
                                 className="
                                     inline-flex
                                     items-center
@@ -225,7 +225,7 @@ function Hero({
                             {socialLinks?.github && (
 
                                 
-                                    href={socialLinks.github}
+                                <a href={socialLinks.github}
                                     target="_blank"
                                     rel="noreferrer"
                                     className={socialButton}
@@ -238,7 +238,7 @@ function Hero({
                             {socialLinks?.linkedin && (
 
                                 
-                                    href={socialLinks.linkedin}
+                                <a href={socialLinks.linkedin}
                                     target="_blank"
                                     rel="noreferrer"
                                     className={socialButton}
@@ -251,7 +251,7 @@ function Hero({
                             {socialLinks?.website && (
 
                                 
-                                    href={socialLinks.website}
+                                <a href={socialLinks.website}
                                     target="_blank"
                                     rel="noreferrer"
                                     className={socialButton}

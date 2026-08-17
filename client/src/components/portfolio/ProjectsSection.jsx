@@ -1,5 +1,6 @@
+import { getAssetUrl } from "../../utils/assetUrl";
+
 function ProjectsSection({ projects }) {
-const API_URL = import.meta.env.VITE_API_URL;
 
     return (
 
@@ -56,10 +57,10 @@ const API_URL = import.meta.env.VITE_API_URL;
                                 className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-slate-700 dark:bg-slate-900"
                             >
 
-                                {project.projectImage && (
+                                {(project.image || project.projectImage) && (
 
                                     <img
-src={`${API_URL}/${project.projectImage}`}lt={project.title}
+src={getAssetUrl(project.image || project.projectImage)} alt={project.title}
                                         className="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
                                     />
 

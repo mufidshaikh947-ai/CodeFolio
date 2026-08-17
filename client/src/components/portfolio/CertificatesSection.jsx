@@ -1,5 +1,6 @@
+import { getAssetUrl } from "../../utils/assetUrl";
+
 function formatDate(date) {
-const API_URL = import.meta.env.VITE_API_URL;
     if (!date) return "";
 
     return new Date(date).toLocaleDateString("en-US", {
@@ -59,7 +60,7 @@ function CertificatesSection({ certificates }) {
                                 {certificate.certificateImage ? (
 
                                     <img
-                                        src={`${API_URL}/${certificate.certificateImage}`}
+                                        src={getAssetUrl(certificate.certificateImage)}
                                         alt={certificate.title}
                                         className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
                                     />

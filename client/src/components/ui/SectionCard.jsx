@@ -14,8 +14,8 @@ function SectionCard({
                 border
                 border-slate-200/80
                 bg-white
-                px-10
-                py-9
+                px-4
+                py-6
                 shadow-xs
                 sm:px-10
                 sm:py-9

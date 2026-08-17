@@ -28,7 +28,7 @@ function Skills({ skills }) {
 
     return (
 
-<section className="py-16 lg:py-20">            <div className="mx-auto max-w-7xl px-8">
+<section className="py-16 lg:py-20">            <div className="mx-auto max-w-7xl px-4 sm:px-8">
 
                 <div className="mb-20 text-center">
 
@@ -38,7 +38,7 @@ function Skills({ skills }) {
 
                     </p>
 
-                    <h2 className="mt-4 text-5xl font-black text-white">
+                    <h2 className="mt-4 text-3xl font-black text-white sm:text-5xl">
 
                         Technologies & Expertise
 

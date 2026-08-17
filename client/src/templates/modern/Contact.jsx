@@ -65,7 +65,7 @@ function Contact({ profile, socialLinks }) {
 
         <section id="contact"  className="py-16 lg:py-20">
 
-            <div className="mx-auto max-w-7xl px-8">
+            <div className="mx-auto max-w-7xl px-4 sm:px-8">
 
                 <div className="mb-20 text-center">
 
@@ -75,7 +75,7 @@ function Contact({ profile, socialLinks }) {
 
                     </p>
 
-                    <h2 className="mt-4 text-5xl font-black text-white">
+                    <h2 className="mt-4 text-3xl font-black text-white sm:text-5xl">
 
                         Let's Work Together
 
@@ -93,7 +93,7 @@ function Contact({ profile, socialLinks }) {
                             border
                             border-white/10
                             bg-white/5
-                            p-10
+                            p-5 sm:p-10
                             backdrop-blur-xl
                         "
                     >
@@ -247,7 +247,7 @@ function Contact({ profile, socialLinks }) {
                             border
                             border-white/10
                             bg-white/5
-                            p-10
+                            p-5 sm:p-10
                             backdrop-blur-xl
                         "
                     >

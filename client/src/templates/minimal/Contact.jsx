@@ -51,7 +51,7 @@ function Contact({ profile, socialLinks }) {
 
         <section id="contact" className="py-24">
 
-            <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 
                 <div className="mb-16 text-center">
 
@@ -61,7 +61,7 @@ function Contact({ profile, socialLinks }) {
 
                     </p>
 
-                    <h2 className="mt-3 text-6xl font-bold tracking-tight text-slate-900">
+                    <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
 
                         Contact
 
@@ -73,7 +73,7 @@ function Contact({ profile, socialLinks }) {
 
                     {/* Left */}
 
-                    <div className="rounded-[36px] border border-slate-200 p-10 shadow-sm">
+                    <div className="rounded-[36px] border border-slate-200 p-5 shadow-sm sm:p-10">
 
                         <h3 className="text-3xl font-bold text-slate-900">
 
@@ -199,7 +199,7 @@ function Contact({ profile, socialLinks }) {
 
                     {/* Right */}
 
-                    <div className="rounded-[36px] border border-slate-200 p-10 shadow-sm">
+                    <div className="rounded-[36px] border border-slate-200 p-5 shadow-sm sm:p-10">
 
                         <form
 

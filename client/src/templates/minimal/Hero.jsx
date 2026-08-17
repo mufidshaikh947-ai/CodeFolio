@@ -1,22 +1,22 @@
 import { BadgeCheck } from "lucide-react";
-import { API_BASE_URL } from "../../constants/api";
+import { getAssetUrl } from "../../utils/assetUrl";
 
 function Hero({ profile, assets, socialLinks }) {
 
 
     const imageUrl = assets?.profileImage
-    ? `${API_BASE_URL}/${assets.profileImage}`
+    ? getAssetUrl(assets.profileImage)
     : "https://placehold.co/500x500?text=Profile";
 
     const resumeUrl = assets?.resume
-    ? `${API_BASE_URL}/${assets.resume}`
+    ? getAssetUrl(assets.resume)
     : null;
 
     return (
 
         <section className="bg-white">
 
-            <div className="mx-auto flex min-h-screen max-w-7xl items-center px-8 py-20">
+            <div className="mx-auto flex min-h-screen max-w-7xl items-center px-4 py-16 sm:px-8 sm:py-20">
 
                 <div className="grid w-full items-center gap-20 lg:grid-cols-2">
 
@@ -64,7 +64,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                         </div>
 
-                        <h2 className="mt-5 text-4xl font-medium text-slate-700">
+                        <h2 className="mt-5 text-2xl font-medium text-slate-700 sm:text-4xl">
 
                             {profile.title || "Software Developer"}
 
@@ -97,10 +97,7 @@ function Hero({ profile, assets, socialLinks }) {
                         <div className="mt-10 flex flex-wrap gap-5">
 
                             {resumeUrl && (
-
-                                
-
-                                    href={resumeUrl}
+                                <a href={resumeUrl}
 
                                     target="_blank"
 
@@ -118,7 +115,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                             
 
-                                href="#contact"
+                            <a href="#contact"
 
                                 className="rounded-full border border-slate-400 px-8 py-4 font-semibold transition hover:bg-slate-100"
 
@@ -138,7 +135,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                                     
 
-                                        href={socialLinks.github}
+                                    <a href={socialLinks.github}
 
                                         target="_blank"
 
@@ -162,7 +159,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                                     
 
-                                        href={socialLinks.linkedin}
+                                    <a href={socialLinks.linkedin}
 
                                         target="_blank"
 
@@ -186,7 +183,7 @@ function Hero({ profile, assets, socialLinks }) {
 
                                     
 
-                                        href={socialLinks.website}
+                                    <a href={socialLinks.website}
 
                                         target="_blank"
 

@@ -52,6 +52,11 @@ displayOrder: {
             default: ""
         },
 
+        imagePublicId: {
+            type: String,
+            default: ""
+        },
+
         featured: {
             type: Boolean,
             default: false

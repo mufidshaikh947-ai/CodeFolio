@@ -29,7 +29,7 @@ function Skills({ skills }) {
     return (
 
 <section className="py-24">
-            <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 
                 <div className="mb-16 text-center">
 
@@ -39,7 +39,7 @@ function Skills({ skills }) {
 
                     </p>
 
-                    <h2 className="mt-3 text-6xl font-bold tracking-tight text-slate-900">
+                    <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
 
                         Skills
 
@@ -63,7 +63,7 @@ function Skills({ skills }) {
 
                                             key={category}
 
-                                            className="rounded-[36px] border border-slate-200 bg-white p-10 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                            className="rounded-[36px] border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-10"
 
                                         >
 

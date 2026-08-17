@@ -19,6 +19,7 @@ import LoadingState from "../components/ui/LoadingState";
 import StatusBadge from "../components/ui/StatusBadge";
 
 import { notifyPortfolioUpdate } from "../utils/livePreview";
+import { getAssetUrl } from "../utils/assetUrl";
 import {
     getProfile,
     updateProfile
@@ -28,8 +29,6 @@ import {
     uploadProfileImage,
     uploadResume
 } from "../services/uploadService";
-
-const API_URL = import.meta.env.VITE_API_URL;
 
 function ProfilePage() {
 
@@ -658,7 +657,7 @@ notifyPortfolioUpdate();
 
                                     profileImage
 
-                                        ? `${API_URL}/${profileImage}`
+                                        ? getAssetUrl(profileImage)
 
                                         : ""
 
@@ -708,7 +707,7 @@ notifyPortfolioUpdate();
 
                                     resume
 
-                                        ? `${API_URL}/${resume}`
+                                        ? getAssetUrl(resume)
 
                                         : ""
 

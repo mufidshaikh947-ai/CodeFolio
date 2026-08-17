@@ -1,3 +1,5 @@
+import { getAssetUrl } from "../../utils/assetUrl";
+
 function HeroSection({
 
     profile,
@@ -7,14 +9,13 @@ function HeroSection({
     socialLinks
 
 }) {
-const API_URL = import.meta.env.VITE_API_URL;
 
    const imageUrl = assets?.profileImage
-    ? `${API_URL}/${assets.profileImage}`
+    ? getAssetUrl(assets.profileImage)
     : "https://placehold.co/300x300?text=Profile";
     
     const resumeUrl = assets?.resume
-        ? `http://localhost:5000/${assets.resume}`
+        ? getAssetUrl(assets.resume)
         : null;
 
     return (

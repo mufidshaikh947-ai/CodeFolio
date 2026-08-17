@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "../../constants/api";
+import { getAssetUrl } from "../../utils/assetUrl";
 
 
 function formatDate(date) {
@@ -19,7 +19,7 @@ function Certificates({ certificates }) {
 
         <section className="py-24">
 
-            <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 
                 <div className="mb-16 text-center">
 
@@ -29,7 +29,7 @@ function Certificates({ certificates }) {
 
                     </p>
 
-                    <h2 className="mt-3 text-6xl font-bold tracking-tight text-slate-900">
+                    <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
 
                         Certificates
 
@@ -60,7 +60,7 @@ function Certificates({ certificates }) {
                                             certificate.certificateImage ? (
 
                                                 <img
-    src={`${API_BASE_URL}/${certificate.certificateImage}`}
+src={getAssetUrl(certificate.certificateImage)}
     alt={certificate.title}
     className="h-64 w-full object-cover"
 />

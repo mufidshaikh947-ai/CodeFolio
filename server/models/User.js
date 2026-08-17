@@ -108,7 +108,17 @@ const userSchema = new mongoose.Schema(
             default: ""
         },
 
+        profileImagePublicId: {
+            type: String,
+            default: ""
+        },
+
         resume: {
+            type: String,
+            default: ""
+        },
+
+        resumePublicId: {
             type: String,
             default: ""
         },

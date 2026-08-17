@@ -7,6 +7,7 @@ import templateMap from "../templates/templateMap";
 import SEO from "../components/common/SEO";
 
 import { subscribePortfolioUpdates } from "../utils/livePreview";
+import { getAssetUrl } from "../utils/assetUrl";
 
 function createMetaDescription(profile) {
 
@@ -29,8 +30,6 @@ function createMetaDescription(profile) {
 function PortfolioPage() {
 
     const { username } = useParams();
-const API_URL = import.meta.env.VITE_API_URL;
-
     const [portfolio, setPortfolio] = useState(null);
 
     const [loading, setLoading] = useState(true);
@@ -155,7 +154,7 @@ const API_URL = import.meta.env.VITE_API_URL;
     }`;
     const description = createMetaDescription(profile);
     const image = portfolio.assets?.profileImage
-    ? `${API_URL}/${portfolio.assets.profileImage}`
+    ? getAssetUrl(portfolio.assets.profileImage)
     : `${siteUrl}/og-image.png`;
 
     return (

@@ -4,7 +4,7 @@ function About({ profile }) {
 
         <section className="py-24">
 
-            <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 
                 <div className="mb-16 text-center">
 
@@ -14,7 +14,7 @@ function About({ profile }) {
 
                     </p>
 
-                    <h2 className="mt-3 text-6xl font-bold tracking-tight text-slate-900">
+                    <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
 
                         About Me
 
@@ -28,7 +28,7 @@ function About({ profile }) {
 
                     <div>
 
-                        <div className="rounded-[36px] border border-slate-200 bg-white p-10 shadow-sm">
+                        <div className="rounded-[36px] border border-slate-200 bg-white p-5 shadow-sm sm:p-10">
 
                             <div className="space-y-8">
 

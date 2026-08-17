@@ -10,7 +10,7 @@ function Experience({ experiences }) {
 
     return (
 
-<section className="py-16 lg:py-20">            <div className="mx-auto max-w-6xl px-8">
+<section className="py-16 lg:py-20">            <div className="mx-auto max-w-6xl px-4 sm:px-8">
 
                 {/* Heading */}
 
@@ -22,7 +22,7 @@ function Experience({ experiences }) {
 
                     </p>
 
-                    <h2 className="mt-4 text-5xl font-black text-white">
+                    <h2 className="mt-4 text-3xl font-black text-white sm:text-5xl">
 
                         Experience
 
